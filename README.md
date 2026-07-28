@@ -29,6 +29,7 @@ This repository includes a diverse collection of example skills demonstrating di
 - **algorithmic-art** - Create generative art using p5.js with seeded randomness, flow fields, and particle systems
 - **canvas-design** - Design beautiful visual art in .png and .pdf formats using design philosophies
 - **slack-gif-creator** - Create animated GIFs optimized for Slack's size constraints
+- **ui-ux-pro-max** - Searchable UI/UX design intelligence: 84 styles, 192 palettes, 74 font pairings, UX guidelines, and charts across 22 tech stacks ([nextlevelbuilder](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill), MIT)
 
 ## Development & Technical
 - **artifacts-builder** - Build complex claude.ai HTML artifacts using React, Tailwind CSS, and shadcn/ui components
