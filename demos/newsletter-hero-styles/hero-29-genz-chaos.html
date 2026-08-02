@@ -1,0 +1,335 @@
+<style>
+  /* ============ STYLE 57 — GEN Z CHAOS / MAXIMALISM ============ */
+  .g57-wrap{
+    --chaos-pink:#FF00FF;
+    --chaos-green:#00FF00;
+    --chaos-yellow:#FFFF00;
+    --chaos-blue:#0000FF;
+    --chaos-orange:#FF5F1F;
+    --chaos-cyan:#00F0FF;
+    --ink:#111111;
+    --paper:#FFFFFF;
+    font-family:-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    color:var(--ink);
+    line-height:1.4;
+  }
+  .g57-wrap *,.g57-wrap *::before,.g57-wrap *::after{box-sizing:border-box;}
+
+  /* ---------- catalog meta bar (outside hero) ---------- */
+  .g57-wrap .meta{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    padding:10px 16px;
+    background:#111;color:#fff;
+    font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    border-bottom:4px solid var(--chaos-pink);
+  }
+  .g57-wrap .meta .num{color:var(--chaos-green);}
+  .g57-wrap .meta .name{color:#fff;}
+  .g57-wrap .meta .swatches{display:inline-flex;gap:5px;margin-left:2px;}
+  .g57-wrap .meta .sw{width:14px;height:14px;border:2px solid #fff;border-radius:3px;display:inline-block;}
+  .g57-wrap .meta .era{
+    margin-left:auto;background:var(--chaos-yellow);color:#111;
+    padding:3px 9px;border-radius:999px;border:2px solid #111;
+    transform:rotate(-2deg);letter-spacing:.06em;
+  }
+
+  /* ---------- hero canvas ---------- */
+  .g57-wrap .hero{
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255,0,255,.55) 0, rgba(255,0,255,0) 30%),
+      radial-gradient(circle at 88% 12%, rgba(0,240,255,.6) 0, rgba(0,240,255,0) 32%),
+      radial-gradient(circle at 85% 85%, rgba(0,255,0,.55) 0, rgba(0,255,0,0) 34%),
+      radial-gradient(circle at 10% 90%, rgba(255,255,0,.6) 0, rgba(255,255,0,0) 30%),
+      conic-gradient(from 40deg at 50% 45%, #FF00FF, #FF5F1F, #FFFF00, #00FF00, #00F0FF, #0000FF, #FF00FF);
+    filter:saturate(150%);
+    padding:64px 20px 72px;
+    text-align:center;
+  }
+  /* noise + halftone grain over the gradient soup */
+  .g57-wrap .hero::before{
+    content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+    background-image:
+      radial-gradient(rgba(0,0,0,.28) 1px, transparent 1.5px),
+      radial-gradient(rgba(255,255,255,.35) 1px, transparent 1.5px);
+    background-size:14px 14px,22px 22px;
+    background-position:0 0,7px 9px;
+    mix-blend-mode:overlay;
+  }
+  .g57-wrap .hero > *{position:relative;z-index:2;}
+
+  /* ---------- sticker-bomb decor layer (aria-hidden, CSS content only) ---------- */
+  .g57-wrap .stickers{position:absolute;inset:0;z-index:1;pointer-events:none;}
+  .g57-wrap .stickers i{position:absolute;display:block;font-style:normal;}
+  .g57-wrap .stickers i::before{
+    display:block;
+    font-weight:900;
+    -webkit-text-stroke:0;
+  }
+  /* starburst stickers (clip-path) */
+  .g57-wrap .st-burst{
+    width:120px;height:120px;
+    clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    filter:drop-shadow(4px 6px 0 rgba(0,0,0,.55));
+  }
+  .g57-wrap .st-burst::after{content:"";display:block;width:100%;height:100%;
+    clip-path:polygon(50% 8%,59% 37%,90% 37%,65% 56%,74% 84%,50% 66%,26% 84%,35% 56%,10% 37%,41% 37%);
+  }
+  .g57-wrap .b1{top:-28px;left:-30px;background:#fff;transform:rotate(-14deg);animation:g57jit 2.6s ease-in-out infinite;}
+  .g57-wrap .b1::after{background:var(--chaos-yellow);}
+  .g57-wrap .b2{bottom:-30px;right:-26px;background:#fff;transform:rotate(19deg) scale(1.25);animation:g57jit 3.1s ease-in-out infinite reverse;}
+  .g57-wrap .b2::after{background:var(--chaos-pink);}
+  .g57-wrap .b3{top:34%;right:-48px;background:#fff;transform:rotate(8deg) scale(.8);}
+  .g57-wrap .b3::after{background:var(--chaos-green);}
+  /* torn-paper strips */
+  .g57-wrap .st-torn{
+    height:54px;background:#fff;opacity:.95;
+    clip-path:polygon(0 22%,4% 8%,9% 24%,15% 6%,21% 20%,28% 4%,34% 22%,41% 10%,48% 26%,55% 8%,62% 22%,69% 6%,76% 24%,83% 10%,90% 24%,96% 8%,100% 20%,100% 82%,95% 96%,89% 78%,82% 94%,74% 76%,67% 92%,59% 74%,52% 92%,45% 78%,38% 94%,30% 76%,23% 92%,16% 78%,9% 94%,4% 78%,0 90%);
+    filter:drop-shadow(3px 4px 0 rgba(0,0,0,.5));
+  }
+  .g57-wrap .t1{left:-4%;top:12%;width:34%;transform:rotate(-7deg);background:var(--chaos-cyan);}
+  .g57-wrap .t2{right:-5%;bottom:20%;width:38%;transform:rotate(5deg);background:var(--chaos-orange);}
+  /* round emoji stickers — white border + hard drop shadow */
+  .g57-wrap .st-dot{
+    width:66px;height:66px;border-radius:50%;
+    background:#fff;border:4px solid #fff;
+    box-shadow:0 0 0 3px #111,5px 7px 0 rgba(0,0,0,.55);
+    display:flex;align-items:center;justify-content:center;
+    font-size:34px;line-height:1;
+  }
+  .g57-wrap .d1{top:9%;left:14%;transform:rotate(-16deg);background:var(--chaos-yellow);animation:g57jit 2.2s ease-in-out infinite;}
+  .g57-wrap .d1::before{content:"⚡";}
+  .g57-wrap .d2{top:16%;right:11%;transform:rotate(13deg);background:var(--chaos-green);animation:g57jit 2.9s ease-in-out infinite reverse;}
+  .g57-wrap .d2::before{content:"😜";}
+  .g57-wrap .d3{bottom:14%;left:8%;transform:rotate(9deg);background:var(--chaos-pink);animation:g57jit 3.4s ease-in-out infinite;}
+  .g57-wrap .d3::before{content:"🔥";}
+  .g57-wrap .d4{bottom:26%;right:6%;transform:rotate(-21deg);background:var(--chaos-cyan);}
+  .g57-wrap .d4::before{content:"💌";}
+  .g57-wrap .d5{top:44%;left:3%;transform:rotate(24deg) scale(.85);background:#fff;}
+  .g57-wrap .d5::before{content:"★";color:var(--chaos-blue);font-size:38px;}
+  /* tape strips */
+  .g57-wrap .st-tape{
+    width:110px;height:26px;background:rgba(255,255,255,.65);
+    box-shadow:2px 3px 0 rgba(0,0,0,.3);
+    backdrop-filter:blur(1px);
+  }
+  .g57-wrap .p1{top:6%;left:44%;transform:rotate(-28deg);}
+  .g57-wrap .p2{bottom:8%;right:32%;transform:rotate(14deg);}
+
+  @keyframes g57jit{
+    0%,100%{translate:0 0;}
+    25%{translate:2px -3px;}
+    50%{translate:-2px 2px;}
+    75%{translate:3px 1px;}
+  }
+
+  /* ---------- wordmark sticker ---------- */
+  .g57-wrap .wordmark{
+    display:inline-block;
+    font-size:clamp(24px,4vw,34px);
+    font-weight:900;font-style:italic;letter-spacing:-.02em;
+    background:var(--chaos-pink);color:#fff;
+    padding:8px 22px 10px;
+    border:4px solid #fff;border-radius:14px;
+    box-shadow:0 0 0 3px #111,6px 8px 0 rgba(0,0,0,.55);
+    transform:rotate(-4deg);
+    text-transform:uppercase;
+  }
+
+  /* ---------- kicker: marquee-ish highlight strip ---------- */
+  .g57-wrap .kicker{
+    display:inline-block;margin:26px auto 6px;
+    font-size:13px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;
+    background:var(--chaos-yellow);color:#111;
+    padding:6px 16px;border:3px solid #111;
+    box-shadow:4px 4px 0 #111;
+    transform:rotate(1.5deg);
+  }
+
+  /* ---------- headline: mixed type treatments ---------- */
+  .g57-wrap h1{
+    margin:18px auto 8px;max-width:16ch;
+    font-size:clamp(40px,8.5vw,88px);
+    font-weight:900;line-height:.98;letter-spacing:-.02em;
+    text-transform:uppercase;
+  }
+  .g57-wrap h1 .w-fill{
+    color:#fff;
+    text-shadow:3px 3px 0 #111,6px 6px 0 var(--chaos-blue);
+  }
+  .g57-wrap h1 .w-outline{
+    display:inline-block;
+    color:transparent;
+    -webkit-text-stroke:2.5px #111;
+    text-shadow:none;
+    transform:rotate(-2deg);
+    background:linear-gradient(transparent 62%,var(--chaos-green) 62%,var(--chaos-green) 96%,transparent 96%);
+    padding:0 .08em;
+  }
+  @supports not (-webkit-text-stroke:2px #111){
+    .g57-wrap h1 .w-outline{color:#111;}
+  }
+  .g57-wrap h1 .accent{
+    display:inline-block;
+    color:#111;
+    background:var(--chaos-yellow);
+    padding:.02em .18em .06em;
+    border:4px solid #111;border-radius:.18em;
+    box-shadow:6px 6px 0 var(--chaos-pink);
+    transform:rotate(2deg);
+  }
+
+  /* ---------- subhead: readable white sticker card ---------- */
+  .g57-wrap .subhead{
+    max-width:46ch;
+    margin:26px auto 0;
+    font-size:clamp(15px,2.1vw,18px);
+    font-weight:600;line-height:1.55;
+    background:var(--paper);color:#222;
+    padding:16px 22px;
+    border:3px solid #111;border-radius:16px;
+    box-shadow:7px 8px 0 rgba(0,0,0,.55),0 0 0 4px #fff;
+    transform:rotate(-1.2deg);
+  }
+
+  /* ---------- signup form ---------- */
+  .g57-wrap .signup{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:14px;
+    margin:30px auto 0;max-width:520px;
+  }
+  .g57-wrap .signup input{
+    flex:1 1 240px;min-width:0;
+    font:inherit;font-weight:700;font-size:16px;
+    padding:15px 18px;
+    background:#fff;color:#111;
+    border:4px solid #111;border-radius:14px;
+    box-shadow:5px 6px 0 var(--chaos-blue),0 0 0 3px #fff;
+    transform:rotate(-1deg);
+  }
+  .g57-wrap .signup input::placeholder{color:#777;font-weight:600;}
+  .g57-wrap .signup button{
+    font:inherit;font-weight:900;font-size:17px;
+    text-transform:uppercase;letter-spacing:.06em;
+    padding:15px 30px;cursor:pointer;
+    background:var(--chaos-green);color:#111;
+    border:4px solid #111;border-radius:14px;
+    box-shadow:5px 6px 0 var(--chaos-pink),0 0 0 3px #fff;
+    transform:rotate(1.6deg);
+    transition:transform .12s ease,box-shadow .12s ease;
+  }
+  .g57-wrap .signup button:hover{transform:rotate(-1deg) scale(1.05);box-shadow:7px 8px 0 var(--chaos-pink),0 0 0 3px #fff;}
+  .g57-wrap .signup button:active{transform:rotate(0) scale(.97);box-shadow:2px 3px 0 var(--chaos-pink),0 0 0 3px #fff;}
+  .g57-wrap .signup input:focus-visible,
+  .g57-wrap .signup button:focus-visible{
+    outline:4px dashed #111;
+    outline-offset:4px;
+    box-shadow:0 0 0 5px var(--chaos-yellow),6px 7px 0 rgba(0,0,0,.6);
+  }
+
+  /* ---------- microcopy sticker ---------- */
+  .g57-wrap .micro{
+    display:inline-block;margin-top:20px;
+    font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+    background:#111;color:var(--chaos-green);
+    padding:6px 14px;border-radius:999px;
+    border:2px solid #fff;
+    box-shadow:3px 4px 0 rgba(0,0,0,.5);
+    transform:rotate(-2deg);
+  }
+
+  /* ---------- stats: clashing sticker cards ---------- */
+  .g57-wrap .stats{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    gap:18px;margin:40px auto 0;max-width:760px;
+    padding:0;list-style:none;
+  }
+  .g57-wrap .stat{
+    flex:1 1 150px;max-width:190px;
+    padding:16px 12px 14px;
+    border:4px solid #fff;border-radius:16px;
+    box-shadow:0 0 0 3px #111,6px 7px 0 rgba(0,0,0,.55);
+  }
+  .g57-wrap .stat .n{display:block;font-size:clamp(22px,3vw,30px);font-weight:900;letter-spacing:-.02em;line-height:1.05;}
+  .g57-wrap .stat .l{display:block;margin-top:5px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;}
+  .g57-wrap .stat:nth-child(1){background:var(--chaos-yellow);color:#111;transform:rotate(-3deg);}
+  .g57-wrap .stat:nth-child(2){background:var(--chaos-pink);color:#fff;transform:rotate(2deg);}
+  .g57-wrap .stat:nth-child(2) .n{text-shadow:2px 2px 0 #111;}
+  .g57-wrap .stat:nth-child(3){background:var(--chaos-green);color:#111;transform:rotate(-1.5deg);}
+  .g57-wrap .stat:nth-child(4){background:var(--chaos-blue);color:#fff;transform:rotate(3deg);}
+  .g57-wrap .stat:nth-child(4) .n{text-shadow:2px 2px 0 #111;}
+  .g57-wrap .stat:hover{transform:rotate(0) scale(1.06);transition:transform .15s ease;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:640px){
+    .g57-wrap .hero{padding:48px 14px 56px;}
+    .g57-wrap .st-burst{width:80px;height:80px;}
+    .g57-wrap .st-dot{width:48px;height:48px;font-size:24px;}
+    .g57-wrap .d5::before{font-size:26px;}
+    .g57-wrap .st-tape{display:none;}
+    .g57-wrap .stat{flex:1 1 40%;}
+  }
+
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion:reduce){
+    .g57-wrap *,.g57-wrap *::before,.g57-wrap *::after{
+      animation:none !important;
+      transition:none !important;
+    }
+  }
+</style>
+
+<div class="g57-wrap">
+
+  <div class="meta">
+    <span class="num">STYLE 57 / 84</span>
+    <span class="name">Gen Z Chaos / Maximalism</span>
+    <span class="swatches" aria-hidden="true">
+      <span class="sw" style="background:#FF00FF"></span>
+      <span class="sw" style="background:#00FF00"></span>
+      <span class="sw" style="background:#FFFF00"></span>
+      <span class="sw" style="background:#0000FF"></span>
+    </span>
+    <span class="era">Internet Core</span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+
+    <div class="stickers" aria-hidden="true">
+      <i class="st-burst b1"></i>
+      <i class="st-burst b2"></i>
+      <i class="st-burst b3"></i>
+      <i class="st-torn t1"></i>
+      <i class="st-torn t2"></i>
+      <i class="st-dot d1"></i>
+      <i class="st-dot d2"></i>
+      <i class="st-dot d3"></i>
+      <i class="st-dot d4"></i>
+      <i class="st-dot d5"></i>
+      <i class="st-tape p1"></i>
+      <i class="st-tape p2"></i>
+    </div>
+
+    <div class="wordmark">Dispatch</div>
+
+    <div><span class="kicker">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1><span class="w-fill">The ideas</span> <span class="w-outline">worth your</span> <span class="accent">inbox.</span></h1>
+
+    <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch"><input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button type="submit">Subscribe</button></form>
+
+    <div><span class="micro">Free forever. Unsubscribe anytime.</span></div>
+
+    <ul class="stats">
+      <li class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></li>
+      <li class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></li>
+      <li class="stat"><span class="n">5 min</span><span class="l">Average read</span></li>
+      <li class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></li>
+    </ul>
+
+  </section>
+
+</div>

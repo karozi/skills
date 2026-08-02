@@ -1,0 +1,354 @@
+<style>
+  .lg-scope, .lg-scope * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .lg-scope {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1c2240;
+    background: #f4f6fd;
+    overflow-x: hidden;
+  }
+
+  /* ---------- catalog meta bar (outside hero) ---------- */
+  .lg-scope .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 28px;
+    background: #ffffff;
+    border-bottom: 1px solid #e3e7f4;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #454e75;
+  }
+  .lg-scope .meta .m-no { font-weight: 700; color: #1c2240; }
+  .lg-scope .meta .m-name { font-weight: 600; }
+  .lg-scope .meta .m-sw { display: inline-flex; gap: 6px; }
+  .lg-scope .meta .m-sw i {
+    width: 14px; height: 14px; border-radius: 4px; display: inline-block;
+    border: 1px solid rgba(28,34,64,.15);
+  }
+  .lg-scope .meta .m-era { margin-left: auto; color: #6a739c; }
+
+  /* ---------- hero ground: light, airy, iridescent ---------- */
+  .lg-scope .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(56px, 9vw, 110px) 24px clamp(64px, 9vw, 120px);
+    background:
+      radial-gradient(1100px 620px at 12% -10%, rgba(103, 232, 249, 0.32), transparent 60%),
+      radial-gradient(900px 560px at 88% 6%, rgba(233, 168, 255, 0.34), transparent 62%),
+      radial-gradient(1000px 700px at 50% 115%, rgba(167, 199, 255, 0.38), transparent 64%),
+      linear-gradient(180deg, #fbfcff 0%, #f1f4fd 55%, #f6effa 100%);
+  }
+
+  /* ---------- liquid droplet / lens forms ---------- */
+  .lg-scope .drop {
+    position: absolute;
+    z-index: -1;
+    border-radius: 58% 42% 55% 45% / 52% 55% 45% 48%;
+    background:
+      radial-gradient(circle at 30% 24%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.32) 18%, rgba(255,255,255,0.05) 42%),
+      linear-gradient(135deg, rgba(125, 240, 255, 0.30), rgba(196, 160, 255, 0.28) 48%, rgba(255, 170, 214, 0.30));
+    box-shadow:
+      inset 2px 3px 6px rgba(255,255,255,0.9),
+      inset -6px -10px 24px rgba(124, 92, 255, 0.18),
+      -1.5px 0 0 rgba(255, 60, 90, 0.16),
+      1.5px 0 0 rgba(0, 205, 235, 0.20),
+      0 24px 60px rgba(87, 96, 178, 0.18);
+    animation: lg-morph 9s ease-in-out infinite alternate;
+  }
+  .lg-scope .drop::after {           /* specular highlight suggesting refraction */
+    content: "";
+    position: absolute;
+    top: 12%; left: 16%;
+    width: 34%; height: 20%;
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0));
+    filter: blur(2px);
+    mix-blend-mode: screen;
+    transform: rotate(-18deg);
+  }
+  .lg-scope .drop-a { width: 340px; height: 300px; top: -110px; left: -90px; }
+  .lg-scope .drop-b { width: 220px; height: 200px; right: -60px; top: 16%; animation-duration: 11s; animation-delay: -3s; }
+  .lg-scope .drop-c { width: 170px; height: 155px; left: 6%; bottom: -50px; animation-duration: 13s; animation-delay: -6s; }
+
+  @keyframes lg-morph {
+    0%   { border-radius: 58% 42% 55% 45% / 52% 55% 45% 48%; transform: translateY(0) rotate(0deg); filter: hue-rotate(0deg) brightness(1); }
+    50%  { border-radius: 45% 55% 44% 56% / 58% 44% 56% 42%; transform: translateY(-14px) rotate(4deg); filter: hue-rotate(24deg) brightness(1.04); }
+    100% { border-radius: 52% 48% 60% 40% / 44% 60% 40% 56%; transform: translateY(8px) rotate(-3deg); filter: hue-rotate(-18deg) brightness(1); }
+  }
+
+  /* ---------- content lens ---------- */
+  .lg-scope .lens {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+    padding: clamp(36px, 6vw, 64px) clamp(22px, 5vw, 64px);
+    border-radius: clamp(36px, 6vw, 60px);
+    background: linear-gradient(168deg, rgba(255,255,255,0.72), rgba(255,255,255,0.34) 55%, rgba(255,255,255,0.55));
+    backdrop-filter: blur(15px) saturate(160%);
+    -webkit-backdrop-filter: blur(15px) saturate(160%);
+    box-shadow:
+      inset 0 2px 2px rgba(255,255,255,1),
+      inset 0 -14px 30px rgba(148, 120, 255, 0.10),
+      inset 3px 0 8px rgba(255,255,255,0.55),
+      -2px 0 0 rgba(255, 70, 100, 0.10),
+      2px 0 0 rgba(0, 200, 230, 0.12),
+      0 30px 80px rgba(84, 92, 170, 0.20);
+  }
+  .lg-scope .lens::before {          /* curved specular sweep on the lens itself */
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(120% 55% at 50% -18%, rgba(255,255,255,0.85), rgba(255,255,255,0) 55%);
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+
+  /* ---------- wordmark ---------- */
+  .lg-scope .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: #1c2240;
+  }
+  .lg-scope .wordmark .bead {
+    width: 34px; height: 34px;
+    border-radius: 50% 50% 50% 46% / 52% 52% 48% 48%;
+    background:
+      radial-gradient(circle at 32% 26%, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.2) 34%, rgba(255,255,255,0) 55%),
+      conic-gradient(from 210deg, #55e0f2, #a78bfa, #f7a8d8, #55e0f2);
+    box-shadow:
+      inset 0 2px 3px rgba(255,255,255,0.9),
+      inset 0 -4px 8px rgba(109, 40, 217, 0.35),
+      0 6px 16px rgba(109, 40, 217, 0.28);
+  }
+  .lg-scope .wordmark .bead::after {
+    content: "D";
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; height: 100%;
+    font-size: 15px; font-weight: 800; color: #ffffff;
+    text-shadow: 0 1px 3px rgba(40, 20, 90, 0.55);
+  }
+
+  /* ---------- type ---------- */
+  .lg-scope .kicker {
+    margin-top: 22px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #4f4699;
+  }
+  .lg-scope h1 {
+    margin: 14px auto 0;
+    max-width: 15ch;
+    font-size: clamp(38px, 6.4vw, 66px);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    font-weight: 800;
+    color: #171d3a;
+  }
+  .lg-scope h1 .accent {
+    background: linear-gradient(94deg, #0e7490 4%, #6d28d9 52%, #be185d 98%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+  }
+  .lg-scope .subhead {
+    margin: 20px auto 0;
+    max-width: 54ch;
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.65;
+    color: #3b4266;
+  }
+
+  /* ---------- fluid pill form ---------- */
+  .lg-scope .signup {
+    margin: 34px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    max-width: 520px;
+  }
+  .lg-scope .signup input {
+    flex: 1 1 260px;
+    min-width: 0;
+    height: 58px;
+    padding: 0 26px;
+    font: inherit;
+    font-size: 16px;
+    color: #1c2240;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(178deg, rgba(255,255,255,0.92), rgba(255,255,255,0.62));
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    box-shadow:
+      inset 0 2px 2px rgba(255,255,255,1),
+      inset 0 -8px 16px rgba(129, 140, 248, 0.16),
+      -1.5px 0 0 rgba(255, 70, 100, 0.14),
+      1.5px 0 0 rgba(0, 200, 230, 0.16),
+      0 12px 30px rgba(84, 92, 170, 0.16);
+    transition: box-shadow 500ms cubic-bezier(.22,.9,.32,1), transform 500ms cubic-bezier(.22,.9,.32,1);
+  }
+  .lg-scope .signup input::placeholder { color: #5a6288; }
+  .lg-scope .signup input:focus-visible {
+    outline: 3px solid #6d28d9;
+    outline-offset: 3px;
+    box-shadow:
+      inset 0 2px 2px rgba(255,255,255,1),
+      inset 0 -8px 18px rgba(129, 140, 248, 0.22),
+      0 14px 36px rgba(84, 92, 170, 0.24);
+  }
+  .lg-scope .signup button {
+    flex: 0 0 auto;
+    height: 58px;
+    padding: 0 34px;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    border: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(120deg, #6d28d9 0%, #7c3aed 40%, #0e7490 100%);
+    box-shadow:
+      inset 0 2px 2px rgba(255,255,255,0.65),
+      inset 0 -6px 14px rgba(23, 6, 60, 0.35),
+      -1.5px 0 0 rgba(255, 90, 120, 0.35),
+      1.5px 0 0 rgba(80, 235, 255, 0.4),
+      0 14px 34px rgba(88, 44, 190, 0.38);
+    transition: transform 500ms cubic-bezier(.22,.9,.32,1), box-shadow 500ms cubic-bezier(.22,.9,.32,1), filter 500ms cubic-bezier(.22,.9,.32,1);
+  }
+  .lg-scope .signup button::before {  /* specular cap on the pill */
+    content: "";
+    position: absolute;
+    top: 5px; left: 14%; right: 14%;
+    height: 40%;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.55), rgba(255,255,255,0));
+    mix-blend-mode: screen;
+    pointer-events: none;
+  }
+  .lg-scope .signup button:hover { transform: translateY(-2px); filter: hue-rotate(12deg) brightness(1.05); }
+  .lg-scope .signup button:active { transform: translateY(0); }
+  .lg-scope .signup button:focus-visible {
+    outline: 3px solid #171d3a;
+    outline-offset: 3px;
+  }
+
+  .lg-scope .micro {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #4a5177;
+  }
+
+  /* ---------- stats: fluid beads ---------- */
+  .lg-scope .stats {
+    margin: 44px auto 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    max-width: 640px;
+    list-style: none;
+  }
+  .lg-scope .stats li {
+    padding: 18px 10px 16px;
+    border-radius: 26px;
+    background: linear-gradient(172deg, rgba(255,255,255,0.85), rgba(255,255,255,0.45));
+    backdrop-filter: blur(15px) saturate(150%);
+    -webkit-backdrop-filter: blur(15px) saturate(150%);
+    box-shadow:
+      inset 0 2px 2px rgba(255,255,255,1),
+      inset 0 -6px 14px rgba(148, 120, 255, 0.12),
+      -1px 0 0 rgba(255, 70, 100, 0.10),
+      1px 0 0 rgba(0, 200, 230, 0.12),
+      0 10px 26px rgba(84, 92, 170, 0.14);
+  }
+  .lg-scope .stats .num {
+    display: block;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    background: linear-gradient(94deg, #0e7490, #6d28d9 60%, #be185d);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .lg-scope .stats .lbl {
+    display: block;
+    margin-top: 4px;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #454e75;
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 620px) {
+    .lg-scope .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .lg-scope .signup button { flex: 1 1 100%; }
+  }
+
+  /* ---------- reduced motion ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .lg-scope .drop { animation: none; }
+    .lg-scope .signup input,
+    .lg-scope .signup button { transition: none; }
+    .lg-scope .signup button:hover { transform: none; filter: none; }
+  }
+</style>
+
+<div class="lg-scope">
+  <div class="meta">
+    <span class="m-no">STYLE 14 / 84</span>
+    <span class="m-name">Liquid Glass</span>
+    <span class="m-sw" aria-hidden="true">
+      <i style="background:#f1f4fd"></i>
+      <i style="background:#55e0f2"></i>
+      <i style="background:#6d28d9"></i>
+      <i style="background:#f7a8d8"></i>
+    </span>
+    <span class="m-era">2020s Modern</span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <span class="drop drop-a" aria-hidden="true"></span>
+    <span class="drop drop-b" aria-hidden="true"></span>
+    <span class="drop drop-c" aria-hidden="true"></span>
+
+    <div class="lens">
+      <div class="wordmark"><span class="bead" aria-hidden="true"></span>Dispatch</div>
+      <p class="kicker">The Weekly Dispatch · Issue N°142</p>
+      <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+      <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+      <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+        <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+
+      <p class="micro">Free forever. Unsubscribe anytime.</p>
+
+      <ul class="stats">
+        <li><span class="num">24,000+</span><span class="lbl">Subscribers</span></li>
+        <li><span class="num">Weekly</span><span class="lbl">Every Friday</span></li>
+        <li><span class="num">5 min</span><span class="lbl">Average read</span></li>
+        <li><span class="num">100%</span><span class="lbl">Free, no ads</span></li>
+      </ul>
+    </div>
+  </section>
+</div>
