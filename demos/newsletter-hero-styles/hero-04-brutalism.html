@@ -1,0 +1,177 @@
+<style>
+  /* ============================================================
+     HERO STYLE 04 — Brutalism
+     Grounded in ui-ux-pro-max styles.csv row 4:
+     pure primaries · visible 3-4px borders · 0px radius ·
+     instant transitions (0s) · bold 700-900 · hard offset
+     shadows · monospace · visible grid · WCAG AAA.
+     Committed single theme.
+     ============================================================ */
+
+  :root {
+    --yellow:#ffe500; --red:#ff0000; --blue:#0000ff; --ink:#000000; --paper:#ffffff;
+    --mono: "Space Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--mono);
+    line-height: 1.5;
+    padding: clamp(16px, 4vw, 48px);
+    display: flex;
+    justify-content: center;
+  }
+  /* brutalism: NO smooth transitions anywhere by default */
+  * { transition: none !important; }
+
+  .wrap { width: 100%; max-width: 1080px; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 10px 18px; padding: 11px 18px; margin-bottom: 22px;
+    background: var(--paper); border: 3px solid var(--ink); box-shadow: 6px 6px 0 var(--ink);
+    font-size: 11px; letter-spacing: 0.02em; text-transform: uppercase; font-weight: 700; color: var(--ink);
+  }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { background: var(--red); color: var(--paper); padding: 3px 7px; }
+  .meta strong { font-weight: 700; }
+  .meta .swatches { display: flex; gap: 0; align-items: center; }
+  .meta .sw { width: 17px; height: 17px; border: 2px solid var(--ink); display: inline-block; margin-left: -2px; }
+  .meta .era { margin-left: 10px; font-weight: 700; }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    background: var(--yellow);
+    border: 4px solid var(--ink);
+    box-shadow: 12px 12px 0 var(--ink);
+    padding: clamp(24px, 4vw, 46px);
+  }
+
+  /* top bar: wordmark block + kicker tag */
+  .top {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; flex-wrap: wrap; margin-bottom: clamp(26px, 4vw, 44px);
+  }
+  .wordmark {
+    background: var(--ink); color: var(--yellow);
+    font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 8px 16px; border: 3px solid var(--ink);
+  }
+  .kicker {
+    background: var(--paper); border: 3px solid var(--ink);
+    padding: 7px 14px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(2.3rem, 7.5vw, 5.6rem);
+    line-height: 0.98; letter-spacing: -0.02em; font-weight: 700;
+    margin: 0; max-width: 15ch; text-transform: uppercase;
+  }
+  h1 .accent {
+    background: var(--blue); color: var(--paper);
+    padding: 0 0.12em; border: 3px solid var(--ink); display: inline-block;
+    transform: rotate(-1.5deg);
+  }
+
+  .subhead {
+    font-size: clamp(1rem, 1.4vw, 1.2rem); font-weight: 400;
+    max-width: 54ch; margin: 26px 0 0;
+    border-left: 6px solid var(--red); padding-left: 16px;
+  }
+
+  /* brutalist email capture */
+  form.signup {
+    margin: 32px 0 0; display: flex; gap: 14px; max-width: 540px; flex-wrap: wrap;
+  }
+  form.signup input {
+    flex: 1 1 220px; min-width: 0;
+    border: 3px solid var(--ink); background: var(--paper); color: var(--ink);
+    font-family: var(--mono); font-size: 1rem; font-weight: 700; padding: 14px 16px;
+    box-shadow: 5px 5px 0 var(--ink);
+  }
+  form.signup input::placeholder { color: #555; font-weight: 400; }
+  form.signup input:focus-visible { outline: 4px solid var(--blue); outline-offset: 0; }
+
+  form.signup button {
+    flex: 0 0 auto; cursor: pointer;
+    border: 3px solid var(--ink); background: var(--blue); color: var(--paper);
+    font-family: var(--mono); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 14px 30px; box-shadow: 5px 5px 0 var(--ink);
+  }
+  form.signup button:hover { background: var(--red); }
+  form.signup button:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--ink); } /* clunk */
+  form.signup button:focus-visible { outline: 4px solid var(--ink); outline-offset: 4px; }
+
+  .microcopy { margin: 14px 0 0; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* stats as raw bordered blocks (AAA: black text on white, colored marker) */
+  .stats {
+    margin: 38px 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+    border: 3px solid var(--ink); box-shadow: 8px 8px 0 var(--ink);
+  }
+  .stat { background: var(--paper); padding: 18px 14px; border-right: 3px solid var(--ink); }
+  .stat:last-child { border-right: 0; }
+  .stat .n { font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { display: block; margin-top: 8px; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .stat::before { content:""; display:block; width: 26px; height: 8px; margin-bottom: 12px; background: var(--ink); }
+  .stat:nth-child(1)::before { background: var(--red); }
+  .stat:nth-child(2)::before { background: var(--blue); }
+  .stat:nth-child(3)::before { background: var(--ink); }
+  .stat:nth-child(4)::before { background: var(--red); }
+
+  @media (max-width: 620px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat:nth-child(2) { border-right: 0; }
+    .stat:nth-child(1), .stat:nth-child(2) { border-bottom: 3px solid var(--ink); }
+  }
+</style>
+
+<div class="wrap">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 04 / 84</span>
+      <strong>BRUTALISM</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#ff0000"></span>
+      <span class="sw" style="background:#0000ff"></span>
+      <span class="sw" style="background:#ffe500"></span>
+      <span class="sw" style="background:#000000"></span>
+      <span class="era">Est. 1950s · Raw</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="top">
+      <span class="wordmark">Dispatch</span>
+      <span class="kicker">The Weekly Dispatch · Issue N°142</span>
+    </div>
+
+    <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

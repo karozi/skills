@@ -1,0 +1,161 @@
+<style>
+  /* ============================================================
+     HERO — Aurora UI  (DB style No. 10)
+     Grounded in ui-ux-pro-max styles.csv row 10:
+     vibrant flowing mesh gradients · Northern-Lights · iridescent ·
+     subtle 8-12s animations · complementary color pairs · luminous.
+     Accessibility (from data): ⚠ text contrast — deep base + white
+     text w/ soft shadow. Distinct from Glass (#03): NO frosted
+     panel/blur; the flowing gradient itself is the hero.
+     Committed single (aurora) theme.
+     ============================================================ */
+
+  :root {
+    --text:#ffffff; --muted:rgba(255,255,255,0.78);
+    --blue:#0080ff; --purple:#8b00ff; --magenta:#ff1493; --cyan:#00ffff; --teal:#14e0c8;
+    --sans: "Space Grotesk", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    min-height: 100vh; background: #0a1130; color: var(--text); font-family: var(--sans);
+    line-height: 1.6; padding: clamp(16px, 4vw, 56px); display: flex; justify-content: center; align-items: flex-start;
+    position: relative; overflow: hidden; -webkit-font-smoothing: antialiased;
+  }
+
+  /* flowing aurora "curtains" — elongated, blurred, screen-blended, slow loop */
+  .aurora { position: fixed; inset: -20%; z-index: 0; pointer-events: none; filter: blur(60px); }
+  .curtain { position: absolute; border-radius: 50%; mix-blend-mode: screen; opacity: 0.85; }
+  .c1 { width: 90vw; height: 42vh; left: -10vw; top: 2vh;  background: radial-gradient(closest-side, var(--blue), transparent);    animation: sway1 12s ease-in-out infinite; }
+  .c2 { width: 80vw; height: 40vh; left: 12vw; top: 18vh;  background: radial-gradient(closest-side, var(--purple), transparent);  animation: sway2 14s ease-in-out infinite; }
+  .c3 { width: 70vw; height: 38vh; right: -8vw; top: 30vh; background: radial-gradient(closest-side, var(--magenta), transparent); animation: sway3 16s ease-in-out infinite; }
+  .c4 { width: 78vw; height: 40vh; left: 4vw; top: 44vh;   background: radial-gradient(closest-side, var(--teal), transparent);    animation: sway2 13s ease-in-out infinite; }
+  .c5 { width: 60vw; height: 34vh; right: 4vw; top: 8vh;   background: radial-gradient(closest-side, var(--cyan), transparent);    animation: sway1 15s ease-in-out infinite; opacity: 0.6; }
+  @keyframes sway1 { 50% { transform: translate(4vw, 5vh) scale(1.12); } }
+  @keyframes sway2 { 50% { transform: translate(-5vw, 4vh) scale(0.9); } }
+  @keyframes sway3 { 50% { transform: translate(-4vw, -4vh) scale(1.15); } }
+  @media (prefers-reduced-motion: reduce) { .curtain { animation: none; } }
+
+  .wrap { width: 100%; max-width: 940px; position: relative; z-index: 1; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 20px; padding: 11px 16px; margin-bottom: clamp(24px, 5vw, 44px);
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted);
+  }
+  .meta strong { color: var(--text); font-weight: 700; }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { color: #7fe9ff; font-weight: 700; }
+  .meta .swatches { display: flex; gap: 6px; align-items: center; }
+  .meta .sw { width: 13px; height: 13px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.35); display: inline-block; }
+
+  /* ==================== HERO ==================== */
+  .hero { text-align: center; padding: clamp(20px, 4vw, 48px) 0; }
+
+  .wordmark { font-size: 1.15rem; font-weight: 700; letter-spacing: 0.02em; text-shadow: 0 2px 20px rgba(0,0,0,0.3); }
+  .kicker {
+    display: inline-block; margin: 18px 0 26px; padding: 6px 15px; border-radius: 999px;
+    background: rgba(255,255,255,0.10); border: 1px solid rgba(255,255,255,0.22);
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 7.5vw, 5.4rem); line-height: 1.02; letter-spacing: -0.02em; font-weight: 700;
+    margin: 0 auto; max-width: 15ch; text-wrap: balance; text-shadow: 0 2px 30px rgba(0,0,0,0.35);
+  }
+  h1 .accent {
+    background: linear-gradient(100deg, var(--cyan), #b98bff 45%, var(--magenta));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .subhead { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--muted); max-width: 54ch; margin: 24px auto 0; text-shadow: 0 1px 12px rgba(0,0,0,0.3); }
+
+  /* signup — luminous translucent (no blur, unlike glass) */
+  form.signup {
+    margin: 34px auto 0; display: flex; gap: 10px; max-width: 480px; align-items: stretch; flex-wrap: wrap; justify-content: center;
+  }
+  form.signup input {
+    flex: 1 1 220px; min-width: 0; border: 1px solid rgba(255,255,255,0.3); border-radius: 999px;
+    background: rgba(255,255,255,0.12); color: var(--text); font-family: var(--sans); font-size: 1rem; padding: 14px 20px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  form.signup input::placeholder { color: rgba(255,255,255,0.6); }
+  form.signup input:focus-visible { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(0,255,255,0.3); }
+  form.signup button {
+    flex: 0 0 auto; cursor: pointer; border: 0; border-radius: 999px;
+    background: linear-gradient(100deg, var(--cyan), var(--magenta)); color: #0a1130;
+    font-family: var(--sans); font-size: 0.95rem; font-weight: 800; letter-spacing: 0.01em; padding: 14px 30px;
+    box-shadow: 0 8px 26px rgba(255,20,147,0.4); transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  form.signup button:hover { transform: translateY(-1px); filter: brightness(1.08); box-shadow: 0 12px 34px rgba(0,255,255,0.45); }
+  form.signup button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .microcopy { margin: 14px 0 0; font-size: 0.82rem; color: var(--muted); }
+
+  /* stats — airy, divider-separated (no cards) */
+  .stats { margin: clamp(38px, 6vw, 54px) auto 0; max-width: 680px; display: flex; justify-content: center; flex-wrap: wrap; }
+  .stat { flex: 1 1 130px; padding: 6px 18px; border-right: 1px solid rgba(255,255,255,0.18); }
+  .stat:last-child { border-right: 0; }
+  .stat .n { font-size: 1.55rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { display: block; margin-top: 7px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(16px); animation: rise .7s ease forwards; }
+  .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}.d4{animation-delay:.38s}.d5{animation-delay:.5s}
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+
+  @media (max-width: 520px) { .stat { flex-basis: 45%; border-right: 0; padding: 10px; } }
+</style>
+
+<div class="aurora" aria-hidden="true">
+  <div class="curtain c1"></div><div class="curtain c2"></div><div class="curtain c3"></div>
+  <div class="curtain c4"></div><div class="curtain c5"></div>
+</div>
+
+<div class="wrap">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 10 / 84</span>
+      <strong>Aurora UI</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#0080ff"></span>
+      <span class="sw" style="background:#8b00ff"></span>
+      <span class="sw" style="background:#ff1493"></span>
+      <span class="sw" style="background:#00ffff"></span>
+      <span>Northern Lights · Luminous</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="wordmark reveal d1">Dispatch</div>
+    <div><span class="kicker reveal d1">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5" aria-label="At a glance">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

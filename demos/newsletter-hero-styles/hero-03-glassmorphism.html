@@ -1,0 +1,210 @@
+<style>
+  /* ============================================================
+     HERO STYLE 03 — Glassmorphism
+     Grounded in ui-ux-pro-max styles.csv row 3:
+     frosted glass · backdrop-blur 10-20px · translucent 10-30% ·
+     1px light border · vibrant background · z-depth layering.
+     Accessibility (from the data): ⚠ ensure 4.5:1 — glass is
+     tinted over a deep base and text is white w/ subtle shadow.
+     Committed single (vibrant dark) theme.
+     ============================================================ */
+
+  :root {
+    --blur: 16px;
+    --glass: rgba(255,255,255,0.10);
+    --glass-strong: rgba(255,255,255,0.16);
+    --edge: rgba(255,255,255,0.22);
+    --text: #f4f2ff;
+    --muted: rgba(244,242,255,0.72);
+
+    --blue:#0080ff; --purple:#8b00ff; --pink:#ff1493; --teal:#20b2aa;
+
+    --sans: "Space Grotesk", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    min-height: 100vh;
+    background: #1a1033;
+    color: var(--text);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    padding: clamp(18px, 4vw, 56px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* ---- the vibrant background: drifting color blobs ---- */
+  .blob { position: fixed; border-radius: 50%; filter: blur(70px); opacity: 0.7; z-index: 0; pointer-events: none; }
+  .b1 { width: 46vw; height: 46vw; background: var(--blue);   top: -12vw; left: -8vw;  animation: drift1 18s ease-in-out infinite; }
+  .b2 { width: 42vw; height: 42vw; background: var(--purple); top: 18vw;  left: 34vw;  animation: drift2 22s ease-in-out infinite; }
+  .b3 { width: 40vw; height: 40vw; background: var(--pink);   bottom: -14vw; right: -6vw; animation: drift3 20s ease-in-out infinite; }
+  .b4 { width: 30vw; height: 30vw; background: var(--teal);   bottom: 8vw; left: 6vw;   animation: drift1 26s ease-in-out infinite; }
+  @keyframes drift1 { 50% { transform: translate(6vw, 5vw) scale(1.1); } }
+  @keyframes drift2 { 50% { transform: translate(-7vw, 4vw) scale(0.92); } }
+  @keyframes drift3 { 50% { transform: translate(-5vw, -6vw) scale(1.08); } }
+  @media (prefers-reduced-motion: reduce) { .blob { animation: none; } }
+
+  .wrap { width: 100%; max-width: 960px; position: relative; z-index: 1; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 20px; padding: 11px 20px; margin-bottom: clamp(18px, 4vw, 34px);
+    border-radius: 14px;
+    background: var(--glass); -webkit-backdrop-filter: blur(var(--blur)); backdrop-filter: blur(var(--blur));
+    border: 1px solid var(--edge);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted);
+  }
+  .meta strong { color: var(--text); font-weight: 700; }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { color: #7fd0ff; font-weight: 700; }
+  .meta .swatches { display: flex; gap: 7px; align-items: center; }
+  .meta .sw { width: 15px; height: 15px; border-radius: 5px; border: 1px solid var(--edge); display: inline-block; }
+
+  /* ==================== HERO (the glass panel) ==================== */
+  .hero {
+    position: relative;
+    border-radius: 28px;
+    background: var(--glass);
+    -webkit-backdrop-filter: blur(var(--blur)); backdrop-filter: blur(var(--blur));
+    border: 1px solid var(--edge);
+    box-shadow: 0 24px 60px rgba(10,4,30,0.45), inset 0 1px 0 rgba(255,255,255,0.25);
+    padding: clamp(34px, 6vw, 72px) clamp(24px, 5vw, 60px);
+    text-align: center;
+    overflow: hidden;
+  }
+  /* top light reflection */
+  .hero::before {
+    content:""; position:absolute; inset:0 0 auto 0; height:40%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.14), transparent);
+    pointer-events:none;
+  }
+  .hero > * { position: relative; }
+
+  .brand { display: inline-flex; align-items: center; gap: 11px; margin-bottom: 28px; }
+  .brand .badge {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 1.05rem;
+    box-shadow: 0 6px 18px rgba(139,0,255,0.5);
+  }
+  .brand .name { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.01em; }
+
+  .kicker {
+    display: inline-block; padding: 6px 15px; border-radius: 999px;
+    background: var(--glass-strong); border: 1px solid var(--edge);
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 24px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 6.5vw, 4.4rem);
+    line-height: 1.02; letter-spacing: -0.02em; font-weight: 700;
+    margin: 0 auto; max-width: 16ch; text-wrap: balance;
+    color: #fff; text-shadow: 0 2px 20px rgba(10,4,30,0.35);
+  }
+  h1 .accent {
+    background: linear-gradient(100deg, #7fd0ff, #c79bff 55%, #ff8fce);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .subhead { font-size: clamp(1rem, 1.4vw, 1.18rem); color: var(--muted); max-width: 52ch; margin: 22px auto 0; }
+
+  /* glass email capture: frosted field + gradient button */
+  form.signup {
+    margin: 34px auto 0; display: flex; gap: 8px; max-width: 470px; align-items: center;
+    background: var(--glass); border: 1px solid var(--edge); border-radius: 999px; padding: 7px 7px 7px 8px;
+    -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); flex-wrap: wrap;
+  }
+  form.signup input {
+    flex: 1 1 180px; min-width: 0; border: 0; background: transparent; color: var(--text);
+    font-family: var(--sans); font-size: 1rem; padding: 11px 16px;
+  }
+  form.signup input::placeholder { color: rgba(244,242,255,0.55); }
+  form.signup input:focus-visible { outline: none; }
+  form.signup button {
+    flex: 0 0 auto; border: 0; border-radius: 999px;
+    background: linear-gradient(100deg, var(--blue), var(--purple) 60%, var(--pink));
+    color: #fff; font-family: var(--sans); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.02em;
+    padding: 13px 28px; cursor: pointer;
+    box-shadow: 0 8px 22px rgba(139,0,255,0.45);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  form.signup button:hover { transform: translateY(-1px); filter: brightness(1.08); box-shadow: 0 12px 30px rgba(255,20,147,0.45); }
+  form.signup button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+  .microcopy { margin: 15px 0 0; font-size: 0.8rem; color: var(--muted); }
+
+  /* stats as small glass chips */
+  .stats { margin: 38px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; max-width: 640px; }
+  .stat {
+    flex: 1 1 120px; border-radius: 16px; padding: 16px 12px;
+    background: var(--glass); border: 1px solid var(--edge);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  }
+  .stat .n { font-size: 1.35rem; font-weight: 700; color: #fff; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { display: block; margin-top: 7px; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise .6s ease forwards; }
+  .d1{animation-delay:.05s}.d2{animation-delay:.14s}.d3{animation-delay:.23s}.d4{animation-delay:.32s}.d5{animation-delay:.41s}
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+</style>
+
+<div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+
+<div class="wrap">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 03 / 84</span>
+      <strong>Glassmorphism</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#0080ff"></span>
+      <span class="sw" style="background:#8b00ff"></span>
+      <span class="sw" style="background:#ff1493"></span>
+      <span class="sw" style="background:#20b2aa"></span>
+      <span>Est. 2020s · Frosted</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="brand reveal d1">
+      <span class="badge" aria-hidden="true">D</span>
+      <span class="name">Dispatch</span>
+    </div>
+
+    <div><span class="kicker reveal d1">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,178 @@
+<style>
+  /* ============================================================
+     HERO — Memphis Design  (DB style No. 44)
+     Grounded in ui-ux-pro-max styles.csv row 44:
+     80s postmodern · bold geometric shapes (triangles, squiggles,
+     circles) · bright clashing colors · dotted textures · patterns
+     · rotate()/clip-path · asymmetric · playful.
+     Accessibility (from data): ⚠ check contrast — text kept dark on
+     light ground; shapes are purely decorative behind content.
+     Committed single theme.
+     ============================================================ */
+
+  :root {
+    --paper:#fdf6ec; --ink:#191426;
+    --pink:#ff71ce; --yellow:#ffce5c; --teal:#86ccca; --purple:#6a7bb4;
+    --sans: "Helvetica Neue", Arial, system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--sans);
+    line-height: 1.5; padding: clamp(16px, 4vw, 48px); display: flex; justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { width: 100%; max-width: 1040px; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 10px 18px; padding: 10px 16px; margin-bottom: 22px;
+    background: #fff; border: 2px solid var(--ink); border-radius: 10px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; text-transform: uppercase; font-weight: 700; color: var(--ink);
+  }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { background: var(--pink); color: #fff; padding: 2px 8px; border-radius: 5px; }
+  .meta .swatches { display: flex; gap: 6px; align-items: center; }
+  .meta .sw { width: 15px; height: 15px; border: 2px solid var(--ink); border-radius: 4px; display: inline-block; }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    position: relative; overflow: hidden; text-align: center;
+    background: #fff; border: 2px solid var(--ink); border-radius: 16px;
+    padding: clamp(40px, 7vw, 76px) clamp(22px, 5vw, 60px);
+  }
+
+  /* decorative Memphis shapes (behind content) */
+  .shape { position: absolute; z-index: 0; pointer-events: none; }
+  .s-tri { width: 0; height: 0; border-left: 22px solid transparent; border-right: 22px solid transparent; border-bottom: 38px solid var(--yellow); }
+  .s-circ { width: 46px; height: 46px; border-radius: 50%; border: 7px solid var(--teal); }
+  .s-dot { width: 90px; height: 90px; background-image: radial-gradient(var(--purple) 3px, transparent 3.5px); background-size: 16px 16px; }
+  .s-half { width: 54px; height: 27px; background: var(--pink); border-radius: 54px 54px 0 0; }
+  .s-zig { width: 70px; height: 22px;
+    background: linear-gradient(135deg, var(--purple) 25%, transparent 25%) -10px 0/20px 20px,
+               linear-gradient(225deg, var(--purple) 25%, transparent 25%) -10px 0/20px 20px; }
+  .p1 { top: 26px; left: 30px; transform: rotate(-12deg); }
+  .p2 { top: 40px; right: 46px; }
+  .p3 { bottom: 30px; left: 44px; }
+  .p4 { bottom: 54px; right: 40px; transform: rotate(18deg); }
+  .p5 { top: 120px; left: 8%; transform: rotate(8deg); }
+  .p6 { bottom: 90px; right: 10%; transform: rotate(-10deg); }
+  .hero > * { position: relative; z-index: 1; }
+
+  .top { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+  .wordmark {
+    background: var(--yellow); border: 2px solid var(--ink); border-radius: 8px;
+    font-weight: 800; font-size: clamp(1rem, 2vw, 1.2rem); padding: 6px 14px; transform: rotate(-2deg); display: inline-block;
+  }
+  .kicker {
+    display: inline-block; margin-bottom: 22px; padding: 6px 15px; border-radius: 999px;
+    background: var(--teal); border: 2px solid var(--ink);
+    font-family: var(--mono); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink);
+  }
+
+  h1 {
+    font-size: clamp(2.3rem, 7vw, 5rem); line-height: 1.0; letter-spacing: -0.02em; font-weight: 800;
+    margin: 0 auto; max-width: 15ch;
+  }
+  h1 .accent { color: var(--pink); position: relative; white-space: nowrap; }
+  h1 .accent::after {
+    content:""; position: absolute; left: 0; right: 0; bottom: -0.14em; height: 8px;
+    background-image: radial-gradient(circle, var(--purple) 40%, transparent 45%); background-size: 12px 8px;
+  }
+
+  .subhead { font-size: clamp(1.02rem, 1.4vw, 1.2rem); color: #4b465a; max-width: 52ch; margin: 26px auto 0; font-weight: 500; }
+
+  /* signup */
+  form.signup { margin: 32px auto 0; display: flex; gap: 12px; max-width: 480px; justify-content: center; flex-wrap: wrap; }
+  form.signup input {
+    flex: 1 1 220px; min-width: 0; border: 2px solid var(--ink); border-radius: 10px; background: var(--paper); color: var(--ink);
+    font-family: var(--sans); font-size: 1rem; font-weight: 600; padding: 14px 18px;
+  }
+  form.signup input::placeholder { color: #9a94a6; font-weight: 500; }
+  form.signup input:focus-visible { outline: none; border-color: var(--pink); box-shadow: 0 0 0 3px rgba(255,113,206,0.3); }
+  form.signup button {
+    flex: 0 0 auto; cursor: pointer; border: 2px solid var(--ink); border-radius: 10px;
+    background: var(--purple); color: #fff; font-family: var(--sans); font-size: 0.95rem; font-weight: 800; letter-spacing: 0.02em;
+    padding: 14px 30px; transition: transform .15s ease, background .15s ease;
+  }
+  form.signup button:hover { transform: rotate(-2deg) scale(1.03); background: var(--pink); }
+  form.signup button:focus-visible { outline: 3px solid var(--purple); outline-offset: 3px; }
+  .microcopy { margin: 14px 0 0; font-size: 0.8rem; font-weight: 700; color: #6a6478; }
+
+  /* stats — playful colored chips */
+  .stats { margin: clamp(34px, 5vw, 46px) auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; max-width: 660px; }
+  .stat { flex: 1 1 130px; border: 2px solid var(--ink); border-radius: 12px; padding: 16px 12px; background: #fff; }
+  .stat:nth-child(1) { background: var(--yellow); }
+  .stat:nth-child(2) { background: var(--teal); }
+  .stat:nth-child(3) { background: var(--pink); color: #fff; }
+  .stat:nth-child(4) { background: #fff; }
+  .stat .n { font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { display: block; margin-top: 7px; font-size: 0.64rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise .5s cubic-bezier(.2,.8,.2,1) forwards; }
+  .d1{animation-delay:.04s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.28s}.d5{animation-delay:.36s}
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+
+  @media (max-width: 620px) {
+    .stat { flex-basis: 44%; }
+    .s-dot, .p5, .p6 { display: none; }
+  }
+</style>
+
+<div class="wrap">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 44 / 84</span>
+      <strong>Memphis Design</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#ff71ce"></span>
+      <span class="sw" style="background:#ffce5c"></span>
+      <span class="sw" style="background:#86ccca"></span>
+      <span class="sw" style="background:#6a7bb4"></span>
+      <span>80s · Postmodern</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <span class="shape s-tri p1" aria-hidden="true"></span>
+    <span class="shape s-circ p2" aria-hidden="true"></span>
+    <span class="shape s-half p3" aria-hidden="true"></span>
+    <span class="shape s-zig p4" aria-hidden="true"></span>
+    <span class="shape s-dot p5" aria-hidden="true"></span>
+    <span class="shape s-circ p6" aria-hidden="true"></span>
+
+    <div class="top reveal d1"><span class="wordmark">Dispatch</span></div>
+
+    <div><span class="kicker reveal d1">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

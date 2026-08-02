@@ -1,0 +1,158 @@
+<style>
+  /* ============================================================
+     HERO — E-Ink / Paper  (DB style No. 56)
+     Grounded in ui-ux-pro-max styles.csv row 56:
+     paper-like matte · high contrast ink-on-paper · monochrome +
+     highlighter-yellow accent · grain texture · NO motion
+     (instant, no fade) · reading serif · WCAG AAA.
+     Committed single (paper) theme.
+     ============================================================ */
+
+  :root {
+    --paper:#fdfbf7; --ink:#1a1a1a; --pencil:#4a4a4a; --line:#e0e0e0;
+    --marker:#fff200;   /* highlighter yellow — the only accent */
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", "Noto Serif", serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; transition: none !important; } /* e-ink: no motion */
+  html, body { margin: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    line-height: 1.65;
+    padding: clamp(16px, 4vw, 52px);
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+  /* paper grain overlay */
+  body::before {
+    content:""; position: fixed; inset: 0; pointer-events: none; z-index: 5;
+    opacity: 0.05; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .card { width: 100%; max-width: 820px; position: relative; z-index: 1; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 20px; padding: 10px 14px; margin-bottom: clamp(20px, 4vw, 34px);
+    border: 1px solid var(--line);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--pencil);
+  }
+  .meta strong { color: var(--ink); font-weight: 700; }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { background: var(--marker); color: var(--ink); padding: 2px 6px; font-weight: 700; }
+  .meta .swatches { display: flex; gap: 6px; align-items: center; }
+  .meta .sw { width: 13px; height: 13px; border: 1px solid var(--ink); display: inline-block; }
+
+  /* ==================== HERO ==================== */
+  .hero { border: 1px solid var(--line); padding: clamp(28px, 5vw, 60px); }
+
+  /* e-reader header bar */
+  .reader-bar {
+    display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    padding-bottom: 14px; border-bottom: 1px solid var(--line);
+  }
+  .wordmark { font-family: var(--serif); font-weight: 700; font-size: 1.1rem; letter-spacing: 0.02em; }
+  .issue { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--pencil); }
+
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.2rem, 6.5vw, 4.4rem); line-height: 1.12; letter-spacing: -0.01em;
+    margin: clamp(30px, 5vw, 52px) 0 0; max-width: 18ch; text-wrap: balance;
+  }
+  /* highlighter marker over one word */
+  h1 .mark {
+    background: linear-gradient(105deg, transparent 2%, var(--marker) 2%, var(--marker) 96%, transparent 96%);
+    padding: 0 0.06em; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+    transform: rotate(-0.6deg); display: inline-block;
+  }
+
+  .subhead {
+    font-size: clamp(1.05rem, 1.5vw, 1.28rem); color: var(--pencil); line-height: 1.7;
+    max-width: 60ch; margin: 26px 0 0;
+  }
+
+  /* paper "writing line" signup */
+  form.signup {
+    margin: 36px 0 0; display: flex; gap: 16px; max-width: 500px; align-items: flex-end; flex-wrap: wrap;
+  }
+  form.signup input {
+    flex: 1 1 200px; min-width: 0; border: 0; border-bottom: 2px solid var(--ink); background: transparent;
+    color: var(--ink); font-family: var(--serif); font-size: 1.1rem; padding: 8px 2px;
+  }
+  form.signup input::placeholder { color: #9a968e; font-style: italic; }
+  form.signup input:focus-visible { outline: none; border-bottom-color: var(--ink); background: #fff6bf; }
+  form.signup button {
+    flex: 0 0 auto; border: 2px solid var(--ink); background: var(--paper); color: var(--ink);
+    font-family: var(--mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 11px 24px; cursor: pointer;
+  }
+  form.signup button:hover, form.signup button:focus-visible { background: var(--ink); color: var(--paper); outline: none; }
+  .microcopy { margin: 14px 0 0; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.03em; color: var(--pencil); }
+
+  /* colophon-style stats row */
+  .stats {
+    margin: clamp(34px, 5vw, 48px) 0 0; padding-top: 20px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap;
+  }
+  .stat { flex: 1 1 120px; padding: 0 18px; border-right: 1px solid var(--line); }
+  .stat:first-child { padding-left: 0; }
+  .stat:last-child { border-right: 0; }
+  .stat .n { font-family: var(--serif); font-weight: 700; font-size: 1.4rem; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { display: block; margin-top: 7px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--pencil); }
+
+  @media (max-width: 560px) {
+    .stat { flex-basis: 45%; border-right: 0; padding: 8px 0; }
+  }
+</style>
+
+<div class="card">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 56 / 84</span>
+      <strong>E-Ink / Paper</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#1a1a1a"></span>
+      <span class="sw" style="background:#fdfbf7"></span>
+      <span class="sw" style="background:#4a4a4a"></span>
+      <span class="sw" style="background:#fff200"></span>
+      <span>Slow tech · Reading</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="reader-bar">
+      <span class="wordmark">Dispatch</span>
+      <span class="issue">The Weekly Dispatch · Issue N°142</span>
+    </div>
+
+    <h1>The ideas worth your <span class="mark">inbox.</span></h1>
+
+    <p class="subhead">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,119 @@
+<style>
+  /* ============================================================
+     HERO — Vintage Analog / Retro Film  (DB style No. 68)
+     Grounded in styles.csv row 68: film grain · faded Kodachrome
+     colors (cream #F5E6C8, sepia #D4A574, muted teal #4A7B7C,
+     soft pink #E8B4B8) · light leaks · camcorder date-stamp ·
+     analog warmth · WCAG AA. Grain overlay + orange corner leak;
+     kicker set like a camera timestamp. Committed single theme.
+     ============================================================ */
+  :root {
+    --cream:#f5e6c8; --sepia:#d4a574; --teal:#4a7b7c; --pink:#e8b4b8; --ink:#3b2f23;
+    --stamp:#ff8c42;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:#e9d9b8;color:var(--ink);font-family:var(--serif);line-height:1.6;
+    padding:clamp(16px,4vw,52px);display:flex;justify-content:center;position:relative}
+  /* film grain */
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.10;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  /* light leak */
+  body::after{content:"";position:fixed;top:-10%;right:-8%;width:45vw;height:60vh;pointer-events:none;z-index:4;
+    background:radial-gradient(closest-side,rgba(255,140,66,.30),rgba(232,180,184,.15) 55%,transparent 75%);
+    mix-blend-mode:screen}
+
+  .wrap{width:100%;max-width:960px;position:relative;z-index:1}
+
+  .meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;
+    padding:10px 16px;margin-bottom:clamp(20px,4vw,34px);background:rgba(255,250,238,.72);
+    border:1px solid #cbb58c;font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+    text-transform:uppercase;color:#7a6a52}
+  .meta strong{color:var(--ink);font-weight:700}
+  .meta .meta-left{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .meta .idx{color:var(--teal);font-weight:700}
+  .meta .swatches{display:flex;gap:6px;align-items:center}
+  .meta .sw{width:13px;height:13px;border:1px solid #a8946f;display:inline-block}
+
+  /* polaroid-style card */
+  .hero{background:var(--cream);border:1px solid #d9c49a;border-bottom:64px solid #efe0c0;
+    box-shadow:0 10px 34px rgba(59,47,35,.28);padding:clamp(28px,5vw,56px);transform:rotate(-.4deg)}
+
+  .top{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;
+    padding-bottom:14px;border-bottom:2px solid var(--sepia);margin-bottom:clamp(26px,4vw,42px)}
+  .wordmark{font-weight:700;font-size:clamp(1.2rem,2.2vw,1.55rem);letter-spacing:.04em;color:var(--teal)}
+  .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--stamp);text-shadow:0 0 6px rgba(255,140,66,.55)}   /* camcorder date-stamp */
+
+  h1{font-size:clamp(2.3rem,7vw,4.9rem);line-height:1.05;letter-spacing:-.01em;font-weight:700;
+    margin:0;max-width:16ch;color:var(--ink)}
+  h1 .accent{color:var(--teal);font-style:italic}
+
+  .subhead{font-size:clamp(1.02rem,1.5vw,1.24rem);color:#5f5140;max-width:56ch;margin:24px 0 0}
+
+  form.signup{margin:32px 0 0;display:flex;gap:12px;max-width:500px;flex-wrap:wrap}
+  form.signup input{flex:1 1 220px;min-width:0;border:2px solid var(--sepia);background:#fffaf0;color:var(--ink);
+    font-family:var(--serif);font-size:1rem;padding:13px 16px;border-radius:4px}
+  form.signup input::placeholder{color:#b7a281;font-style:italic}
+  form.signup input:focus-visible{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px rgba(74,123,124,.25)}
+  form.signup button{flex:0 0 auto;cursor:pointer;border:2px solid var(--teal);border-radius:4px;
+    background:var(--teal);color:var(--cream);font-family:var(--mono);font-size:.82rem;font-weight:700;
+    letter-spacing:.1em;text-transform:uppercase;padding:13px 26px;transition:background .25s,color .25s}
+  form.signup button:hover{background:transparent;color:var(--teal)}
+  form.signup button:focus-visible{outline:3px solid var(--stamp);outline-offset:3px}
+  .microcopy{margin:14px 0 0;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;color:#8a7a60}
+
+  /* stats as faded contact-sheet frames */
+  .stats{margin:clamp(30px,5vw,44px) 0 0;display:flex;flex-wrap:wrap;gap:14px}
+  .stat{flex:1 1 130px;background:#fffaf0;border:1px solid var(--sepia);padding:16px 14px;
+    box-shadow:2px 3px 0 rgba(212,165,116,.5)}
+  .stat:nth-child(even){transform:rotate(.5deg)} .stat:nth-child(odd){transform:rotate(-.5deg)}
+  .stat .n{font-size:1.45rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;color:var(--ink)}
+  .stat .l{display:block;margin-top:7px;font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;
+    text-transform:uppercase;color:#8a7a60}
+
+  .reveal{opacity:0;animation:fadein .9s ease forwards}
+  .d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}.d5{animation-delay:.7s}
+  @keyframes fadein{to{opacity:1}}
+  @media (prefers-reduced-motion: reduce){.reveal{animation:none;opacity:1}}
+  @media (max-width:560px){.stat{flex-basis:44%}}
+</style>
+
+<div class="wrap">
+  <div class="meta">
+    <span class="meta-left"><span class="idx">STYLE 68 / 84</span><strong>Vintage Analog / Retro Film</strong></span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#f5e6c8"></span><span class="sw" style="background:#d4a574"></span>
+      <span class="sw" style="background:#4a7b7c"></span><span class="sw" style="background:#e8b4b8"></span>
+      <span>Analog · Film</span>
+    </span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="top reveal d1">
+      <span class="wordmark">Dispatch</span>
+      <span class="kicker">The Weekly Dispatch · Issue N°142</span>
+    </div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

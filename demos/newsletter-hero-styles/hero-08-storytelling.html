@@ -1,0 +1,165 @@
+<style>
+  /* ============================================================
+     HERO — Storytelling-Driven  (DB style No. 27)
+     Grounded in ui-ux-pro-max styles.csv row 27:
+     narrative flow · chapter structure · warm/emotional colors ·
+     scroll-triggered reveals · timeline/journey · narrative serif.
+     Committed single (warm) theme. Deliberately avoids the
+     cream+terracotta AI cliche via a coral-glow gradient + coral
+     accent + genuine narrative devices.
+     ============================================================ */
+
+  :root {
+    --ink:#2b221d; --muted:#7a6a5f; --line:#ecd9c9;
+    --coral:#ea6a47; --amber:#e8933d;
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", "Noto Serif", serif;
+    --sans: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    color: var(--ink); font-family: var(--sans); line-height: 1.6;
+    padding: clamp(16px, 4vw, 52px); display: flex; justify-content: center;
+    background:
+      radial-gradient(60% 55% at 50% 0%, rgba(234,106,71,0.16), transparent 70%),
+      linear-gradient(180deg, #fff7f0 0%, #ffeede 100%);
+    background-attachment: fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .card { width: 100%; max-width: 940px; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 20px; padding: 11px 16px; margin-bottom: clamp(20px, 4vw, 38px);
+    background: rgba(255,255,255,0.55); border: 1px solid var(--line); border-radius: 12px;
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted);
+  }
+  .meta strong { color: var(--ink); font-weight: 700; }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { color: var(--coral); font-weight: 700; }
+  .meta .swatches { display: flex; gap: 6px; align-items: center; }
+  .meta .sw { width: 13px; height: 13px; border-radius: 4px; border: 1px solid rgba(0,0,0,.12); display: inline-block; }
+
+  /* ==================== HERO ==================== */
+  .hero { text-align: center; }
+
+  .wordmark { font-family: var(--serif); font-weight: 700; font-size: 1.25rem; letter-spacing: 0.02em; color: var(--ink); }
+
+  /* chapter-divider kicker */
+  .kicker {
+    display: inline-flex; align-items: center; gap: 14px; margin: 6px 0 26px;
+    font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+  .kicker::before, .kicker::after { content:""; width: 34px; height: 2px; background: var(--coral); display: inline-block; }
+
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 5rem); line-height: 1.04; letter-spacing: -0.015em;
+    margin: 0 auto; max-width: 15ch; text-wrap: balance;
+  }
+  h1 .accent {
+    font-style: italic;
+    background: linear-gradient(100deg, var(--coral), var(--amber));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .subhead { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: var(--muted); max-width: 56ch; margin: 24px auto 0; }
+
+  /* warm, friendly signup */
+  form.signup {
+    margin: 34px auto 0; display: flex; gap: 10px; max-width: 480px; align-items: stretch; flex-wrap: wrap;
+    justify-content: center;
+  }
+  form.signup input {
+    flex: 1 1 220px; min-width: 0; border: 1.5px solid var(--line); border-radius: 12px;
+    background: rgba(255,255,255,0.8); color: var(--ink); font-family: var(--sans); font-size: 1rem; padding: 14px 18px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  form.signup input::placeholder { color: #b3a494; }
+  form.signup input:focus-visible { outline: none; border-color: var(--coral); box-shadow: 0 0 0 4px rgba(234,106,71,0.16); }
+  form.signup button {
+    flex: 0 0 auto; border: 0; border-radius: 12px; cursor: pointer;
+    background: linear-gradient(100deg, var(--coral), var(--amber)); color: #fff;
+    font-family: var(--sans); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.01em; padding: 14px 30px;
+    box-shadow: 0 8px 20px rgba(234,106,71,0.32);
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  }
+  form.signup button:hover { transform: translateY(-1px); filter: brightness(1.04); box-shadow: 0 12px 26px rgba(234,106,71,0.4); }
+  form.signup button:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+  .microcopy { margin: 14px 0 0; font-size: 0.82rem; color: var(--muted); }
+
+  /* stats as a connected journey timeline */
+  .stats {
+    position: relative; margin: clamp(40px, 6vw, 60px) auto 0; max-width: 720px;
+    display: flex; justify-content: space-between; gap: 8px;
+  }
+  .stats::before { content:""; position: absolute; top: 5px; left: 6%; right: 6%; height: 2px; background: var(--line); z-index: 0; }
+  .stat { position: relative; z-index: 1; flex: 1 1 0; }
+  .stat::before {
+    content:""; display: block; width: 12px; height: 12px; border-radius: 50%;
+    background: #fff; border: 2px solid var(--coral); margin: 0 auto 16px;
+  }
+  .stat .n { font-family: var(--serif); font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { display: block; margin-top: 6px; font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  /* reveal (scroll-story feel) */
+  .reveal { opacity: 0; transform: translateY(16px); animation: rise .6s ease forwards; }
+  .d1{animation-delay:.05s}.d2{animation-delay:.16s}.d3{animation-delay:.27s}.d4{animation-delay:.38s}.d5{animation-delay:.5s}
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+
+  @media (max-width: 520px) {
+    .stats { flex-wrap: wrap; gap: 20px 8px; }
+    .stats::before { display: none; }
+    .stat { flex-basis: 45%; }
+  }
+</style>
+
+<div class="card">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 27 / 84</span>
+      <strong>Storytelling-Driven</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#ea6a47"></span>
+      <span class="sw" style="background:#e8933d"></span>
+      <span class="sw" style="background:#fff7f0"></span>
+      <span class="sw" style="background:#2b221d"></span>
+      <span>Narrative · Warm</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="wordmark reveal d1">Dispatch</div>
+    <div class="kicker reveal d1">The Weekly Dispatch · Issue N°142</div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5" aria-label="At a glance">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

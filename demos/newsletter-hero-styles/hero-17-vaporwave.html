@@ -1,0 +1,134 @@
+<style>
+  /* ============================================================
+     HERO — Vaporwave  (DB style No. 45)
+     Grounded in styles.csv row 45: synthwave sunset gradient ·
+     neon pink #FF71CE / cyan #01CDFE / mint #05FFA1 / purple
+     #B967FF · perspective grid floor · glow text-shadow · scan
+     lines · glitch accent · dreamy retro-futurism.
+     Motion flag from data → glitch & grid pause under
+     prefers-reduced-motion. Committed single theme.
+     ============================================================ */
+  :root {
+    --pink:#ff71ce; --cyan:#01cdfe; --mint:#05ffa1; --purple:#b967ff; --deep:#1b0f3b;
+    --sans:"Verdana","Segoe UI",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{min-height:100vh;color:#fff;font-family:var(--sans);line-height:1.5;
+    padding:clamp(16px,4vw,52px);display:flex;justify-content:center;position:relative;overflow-x:hidden;
+    background:linear-gradient(180deg,#150a33 0%,#3b1465 34%,#8a2387 58%,#e94057 78%,#f27121 100%)}
+  /* sun */
+  body::before{content:"";position:fixed;left:50%;top:34vh;transform:translateX(-50%);z-index:0;
+    width:min(46vw,340px);height:min(46vw,340px);border-radius:50%;
+    background:linear-gradient(180deg,#ffd319 0%,#ff2975 55%,#ff2975 100%);
+    -webkit-mask:linear-gradient(#000 0 0) top/100% 55%,
+      repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 20px) bottom/100% 45%;
+    mask:linear-gradient(#000 0 0) top/100% 55%,
+      repeating-linear-gradient(180deg,#000 0 12px,transparent 12px 20px) bottom/100% 45%;
+    -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+    filter:drop-shadow(0 0 40px rgba(255,41,117,.8));opacity:.9}
+  /* perspective grid floor */
+  .floor{position:fixed;left:-25%;right:-25%;bottom:-4vh;height:42vh;z-index:0;pointer-events:none;
+    background:
+      repeating-linear-gradient(90deg,rgba(1,205,254,.7) 0 2px,transparent 2px 80px),
+      repeating-linear-gradient(180deg,rgba(1,205,254,.7) 0 2px,transparent 2px 46px),
+      linear-gradient(180deg,rgba(27,15,59,.2),#150a33 90%);
+    transform:perspective(340px) rotateX(58deg);transform-origin:top;
+    animation:scroll 6s linear infinite}
+  @keyframes scroll{to{background-position:0 46px,0 46px,0 0}}
+  /* scanlines */
+  .scan{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:.14;mix-blend-mode:overlay;
+    background:repeating-linear-gradient(180deg,#fff 0 1px,transparent 1px 4px)}
+  @media (prefers-reduced-motion: reduce){.floor{animation:none}}
+
+  .wrap{width:100%;max-width:920px;position:relative;z-index:3}
+
+  .meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;
+    padding:10px 16px;margin-bottom:clamp(22px,4vw,40px);border:1px solid rgba(1,205,254,.5);border-radius:10px;
+    background:rgba(21,10,51,.6);font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+    text-transform:uppercase;color:rgba(255,255,255,.75)}
+  .meta strong{color:var(--cyan);font-weight:700;text-shadow:0 0 8px rgba(1,205,254,.7)}
+  .meta .meta-left{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .meta .idx{color:var(--pink);font-weight:700;text-shadow:0 0 8px rgba(255,113,206,.8)}
+  .meta .swatches{display:flex;gap:6px;align-items:center}
+  .meta .sw{width:13px;height:13px;border:1px solid rgba(255,255,255,.4);display:inline-block}
+
+  .hero{text-align:center;padding:clamp(14px,3vw,30px) 0}
+  .wordmark{display:inline-block;font-weight:700;font-size:1.3rem;letter-spacing:.35em;text-transform:uppercase;
+    color:#fff;text-shadow:0 0 10px var(--cyan),0 0 24px var(--cyan)}
+  .kicker{display:block;margin:14px auto 22px;font-family:var(--mono);font-size:.68rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--mint);text-shadow:0 0 10px rgba(5,255,161,.8)}
+
+  h1{font-size:clamp(2.4rem,7.5vw,5.4rem);line-height:1.02;letter-spacing:.01em;font-weight:700;
+    text-transform:uppercase;margin:0 auto;max-width:14ch;
+    color:#fff;text-shadow:0 0 18px rgba(185,103,255,.9),0 0 40px rgba(255,113,206,.5)}
+  h1 .accent{position:relative;color:var(--pink);
+    text-shadow:2px 0 0 var(--cyan),-2px 0 0 var(--mint),0 0 22px rgba(255,113,206,.95)}
+
+  .subhead{font-size:clamp(1rem,1.4vw,1.16rem);color:rgba(255,255,255,.85);max-width:52ch;margin:22px auto 0;
+    text-shadow:0 1px 8px rgba(21,10,51,.8)}
+
+  form.signup{margin:32px auto 0;display:flex;gap:12px;max-width:480px;justify-content:center;flex-wrap:wrap}
+  form.signup input{flex:1 1 220px;min-width:0;border:2px solid var(--cyan);background:rgba(21,10,51,.75);
+    color:#fff;font-family:var(--mono);font-size:.95rem;padding:14px 16px;
+    box-shadow:0 0 14px rgba(1,205,254,.4), inset 0 0 10px rgba(1,205,254,.15)}
+  form.signup input::placeholder{color:rgba(1,205,254,.6)}
+  form.signup input:focus-visible{outline:none;border-color:var(--mint);box-shadow:0 0 18px rgba(5,255,161,.6)}
+  form.signup button{flex:0 0 auto;cursor:pointer;border:2px solid var(--pink);background:transparent;color:var(--pink);
+    font-family:var(--mono);font-size:.9rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding:14px 28px;text-shadow:0 0 10px rgba(255,113,206,.8);box-shadow:0 0 16px rgba(255,113,206,.45), inset 0 0 12px rgba(255,113,206,.15);
+    transition:background .2s,color .2s,box-shadow .2s}
+  form.signup button:hover{background:var(--pink);color:var(--deep);text-shadow:none;box-shadow:0 0 30px rgba(255,113,206,.9)}
+  form.signup button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  .microcopy{margin:14px 0 0;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+    color:rgba(255,255,255,.7)}
+
+  .stats{margin:clamp(30px,5vw,44px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;max-width:680px}
+  .stat{flex:1 1 130px;padding:14px 12px;background:rgba(21,10,51,.65);border:1px solid rgba(185,103,255,.55);
+    box-shadow:0 0 12px rgba(185,103,255,.3)}
+  .stat .n{font-size:1.35rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1;color:var(--cyan);
+    text-shadow:0 0 10px rgba(1,205,254,.8)}
+  .stat .l{display:block;margin-top:7px;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;
+    text-transform:uppercase;color:rgba(255,255,255,.7)}
+
+  @media (max-width:560px){.stat{flex-basis:44%}}
+</style>
+
+<div class="floor" aria-hidden="true"></div>
+<div class="scan" aria-hidden="true"></div>
+
+<div class="wrap">
+  <div class="meta">
+    <span class="meta-left"><span class="idx">STYLE 45 / 84</span><strong>Vaporwave</strong></span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#ff71ce"></span><span class="sw" style="background:#01cdfe"></span>
+      <span class="sw" style="background:#05ffa1"></span><span class="sw" style="background:#b967ff"></span>
+      <span>Synthwave · Neon</span>
+    </span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="wordmark">Dispatch</div>
+    <span class="kicker">The Weekly Dispatch · Issue N°142</span>
+
+    <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

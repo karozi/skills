@@ -1,0 +1,130 @@
+<style>
+  /* ============================================================
+     HERO — Anti-Polish / Raw Aesthetic  (DB style No. 59)
+     Grounded in styles.csv row 59: hand-drawn · imperfect ·
+     paper white #FAFAF8 · pencil grey · marker black · kraft
+     brown #C4A77D · tape textures · sketch marks · no smooth
+     transitions · human, authentic, zine energy. Wobbly borders
+     (uneven radii), tape strips, wavy marker underline, tilt.
+     Committed single theme.
+     ============================================================ */
+  :root {
+    --paper:#fafaf8; --pencil:#4a4a4a; --marker:#1a1a1a; --kraft:#c4a77d; --wash:#f4e9d6;
+    --hand:"Segoe Print","Bradley Hand","Comic Sans MS","Chalkboard SE",cursive;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;transition:none!important} html,body{margin:0}
+  body{background:var(--paper);color:var(--marker);font-family:var(--hand);line-height:1.6;
+    padding:clamp(16px,4vw,48px);display:flex;justify-content:center;position:relative}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.06;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* hand-drawn wobbly border helper */
+  .wob{border:2.5px solid var(--marker);
+    border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
+
+  .wrap{width:100%;max-width:940px;position:relative;z-index:1}
+
+  .meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;
+    padding:10px 18px;margin-bottom:24px;background:#fff;
+    font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--pencil);
+    transform:rotate(-.4deg)}
+  .meta strong{color:var(--marker);font-weight:700;font-family:var(--hand);text-transform:none;font-size:13px}
+  .meta .meta-left{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .meta .idx{background:var(--wash);border:2px solid var(--marker);border-radius:60% 40% 55% 45%/45% 55% 40% 60%;
+    padding:2px 9px;font-weight:700;color:var(--marker)}
+  .meta .swatches{display:flex;gap:6px;align-items:center}
+  .meta .sw{width:14px;height:14px;border:2px solid var(--marker);border-radius:60% 40% 50% 50%/50% 50% 45% 55%;display:inline-block}
+
+  .hero{position:relative;background:#fff;padding:clamp(30px,5vw,58px);transform:rotate(.35deg);
+    box-shadow:3px 4px 0 rgba(74,74,74,.25)}
+  /* kraft tape strips */
+  .tape{position:absolute;width:110px;height:30px;background:rgba(196,167,125,.75);z-index:2;
+    box-shadow:0 1px 3px rgba(0,0,0,.15)}
+  .tp1{top:-14px;left:8%;transform:rotate(-5deg)}
+  .tp2{top:-12px;right:10%;transform:rotate(4deg)}
+  /* pencil scribbles */
+  .scrib{position:absolute;color:var(--pencil);font-size:30px;opacity:.5;pointer-events:none;z-index:0}
+  .scrib::before{content:"✎"}
+  .sc1{bottom:26px;right:30px;transform:rotate(-15deg)}
+
+  .top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:clamp(24px,4vw,40px)}
+  .wordmark{display:inline-block;font-weight:700;font-size:clamp(1.15rem,2.2vw,1.5rem);padding:6px 16px;
+    background:var(--wash);transform:rotate(-1.5deg)}
+  .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--pencil);
+    border-bottom:2px dashed var(--pencil);padding-bottom:3px}
+
+  h1{font-size:clamp(2.2rem,6.8vw,4.6rem);line-height:1.1;font-weight:700;margin:0;max-width:16ch}
+  h1 .accent{position:relative;white-space:nowrap;
+    text-decoration:underline wavy var(--kraft) .09em;text-underline-offset:.14em}
+
+  .subhead{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--pencil);max-width:52ch;margin:26px 0 0}
+
+  form.signup{margin:32px 0 0;display:flex;gap:14px;max-width:520px;flex-wrap:wrap}
+  form.signup input{flex:1 1 220px;min-width:0;background:#fff;color:var(--marker);
+    font-family:var(--hand);font-size:1rem;padding:13px 16px;
+    border:2.5px solid var(--marker);border-radius:255px 15px 225px 15px/15px 225px 15px 255px}
+  form.signup input::placeholder{color:#a3a39d}
+  form.signup input:focus-visible{outline:3px dashed var(--kraft);outline-offset:3px}
+  form.signup button{flex:0 0 auto;cursor:pointer;background:var(--marker);color:#fff;
+    font-family:var(--hand);font-size:1rem;font-weight:700;padding:13px 30px;
+    border:2.5px solid var(--marker);border-radius:15px 225px 15px 255px/225px 15px 255px 15px;
+    transform:rotate(-1deg)}
+  form.signup button:hover{background:var(--pencil);transform:rotate(1deg)}
+  form.signup button:focus-visible{outline:3px dashed var(--marker);outline-offset:4px}
+  .microcopy{margin:14px 0 0;font-size:.9rem;color:var(--pencil);transform:rotate(-.3deg)}
+
+  /* stats as sticky-note scraps */
+  .stats{margin:clamp(30px,5vw,44px) 0 0;display:flex;flex-wrap:wrap;gap:16px}
+  .stat{flex:1 1 130px;background:var(--wash);padding:16px 14px;
+    border:2px solid var(--marker);border-radius:225px 15px 255px 15px/15px 255px 15px 225px}
+  .stat:nth-child(1){transform:rotate(-1.2deg)} .stat:nth-child(2){transform:rotate(.8deg)}
+  .stat:nth-child(3){transform:rotate(-.6deg)} .stat:nth-child(4){transform:rotate(1.1deg);background:#fff}
+  .stat .n{font-size:1.45rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.1}
+  .stat .l{display:block;margin-top:6px;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--pencil)}
+
+  @media (max-width:560px){.stat{flex-basis:44%}.tp2{display:none}}
+</style>
+
+<div class="wrap">
+  <div class="meta wob">
+    <span class="meta-left"><span class="idx">STYLE 59 / 84</span><strong>Anti-Polish / Raw</strong></span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#fafaf8"></span><span class="sw" style="background:#4a4a4a"></span>
+      <span class="sw" style="background:#1a1a1a"></span><span class="sw" style="background:#c4a77d"></span>
+      <span>Hand-drawn · Zine</span>
+    </span>
+  </div>
+
+  <section class="hero wob" aria-label="Newsletter hero preview">
+    <span class="tape tp1" aria-hidden="true"></span>
+    <span class="tape tp2" aria-hidden="true"></span>
+    <span class="scrib sc1" aria-hidden="true"></span>
+
+    <div class="top">
+      <span class="wordmark">Dispatch</span>
+      <span class="kicker">The Weekly Dispatch · Issue N°142</span>
+    </div>
+
+    <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>
