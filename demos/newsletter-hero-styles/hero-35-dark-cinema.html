@@ -1,0 +1,280 @@
+<style>
+  /* ============ STYLE 71 — MODERN DARK (CINEMA MOBILE) ============
+     Prestige-streaming title card: deep charcoal-black, indigo ambient
+     light wash, letterboxed stage, hushed glass, film-credit type. */
+
+  .meta, .hero-71 { box-sizing: border-box; }
+  .meta *, .hero-71 * { box-sizing: inherit; margin: 0; padding: 0; }
+
+  /* ---------- catalog meta bar (outside the hero) ---------- */
+  .meta {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 14px;
+    padding: 12px 20px;
+    background: #0a0a0c;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-bottom: none;
+    font-family: "Helvetica Neue", "Segoe UI", Inter, Arial, sans-serif;
+    font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: #b9bdc6;
+  }
+  .meta .no { color: #eef0f6; font-weight: 600; }
+  .meta .name { color: #9ba4e0; }
+  .meta .swatches { display: inline-flex; gap: 6px; }
+  .meta .swatches i {
+    width: 14px; height: 14px; border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.18); display: inline-block;
+  }
+  .meta .era { margin-left: auto; color: #8a8f98; letter-spacing: 0.22em; }
+
+  /* ---------- hero shell: letterboxed cinema stage ---------- */
+  .hero-71 {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(180deg, #0a0a0f 0%, #050506 45%, #020203 100%);
+    color: #ededef;
+    font-family: "Helvetica Neue", "Segoe UI", Inter, Arial, sans-serif;
+    padding: clamp(64px, 9vw, 112px) 24px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  /* letterbox bars, top and bottom — the frame of the frame */
+  .hero-71::before, .hero-71::after {
+    content: "";
+    position: absolute; left: 0; right: 0; height: clamp(18px, 3vw, 30px);
+    background: #010102;
+    z-index: 3;
+  }
+  .hero-71::before { top: 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .hero-71::after  { bottom: 0; border-top: 1px solid rgba(255,255,255,0.06); }
+
+  /* ambient light: two slow indigo/violet blobs, like screen glow in a dark room */
+  .hero-71 .glow {
+    position: absolute; border-radius: 50%;
+    filter: blur(70px); pointer-events: none; z-index: 0;
+  }
+  .hero-71 .glow-a {
+    width: 56vw; min-width: 420px; height: 56vw; min-height: 420px;
+    top: -22%; left: 8%;
+    background: radial-gradient(circle,
+      rgba(94,106,210,0.20) 0%, rgba(94,106,210,0.07) 45%, transparent 70%);
+    animation: drift-a 38s cubic-bezier(0.16,1,0.3,1) infinite alternate;
+  }
+  .hero-71 .glow-b {
+    width: 44vw; min-width: 320px; height: 44vw; min-height: 320px;
+    bottom: -28%; right: 2%;
+    background: radial-gradient(circle,
+      rgba(122,92,200,0.14) 0%, rgba(122,92,200,0.05) 45%, transparent 70%);
+    animation: drift-b 46s cubic-bezier(0.16,1,0.3,1) infinite alternate;
+  }
+  @keyframes drift-a {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(6vw, 4vh) scale(1.08); }
+  }
+  @keyframes drift-b {
+    from { transform: translate(0, 0) scale(1.05); }
+    to   { transform: translate(-5vw, -4vh) scale(1); }
+  }
+
+  /* cinematic vignette over everything but under text */
+  .hero-71 .vignette {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(ellipse 120% 90% at 50% 42%,
+      transparent 40%, rgba(1,1,2,0.55) 100%);
+  }
+
+  /* ---------- the stage ---------- */
+  .hero-71 .stage {
+    position: relative; z-index: 2;
+    max-width: 680px; margin: 0 auto;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center;
+  }
+
+  /* wordmark — quiet studio ident */
+  .hero-71 .wordmark {
+    font-size: 13px; font-weight: 400;
+    letter-spacing: 0.55em; text-transform: uppercase;
+    text-indent: 0.55em; /* optically recenter tracked caps */
+    color: #c9cdd6;
+  }
+  .hero-71 .wordmark::before, .hero-71 .wordmark::after {
+    content: ""; display: inline-block; vertical-align: middle;
+    width: 34px; height: 1px; margin: 0 16px 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35));
+  }
+  .hero-71 .wordmark::after {
+    background: linear-gradient(90deg, rgba(255,255,255,0.35), transparent);
+  }
+
+  /* kicker — film-credit small caps */
+  .hero-71 .kicker {
+    margin-top: 26px;
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.34em; text-transform: uppercase; text-indent: 0.34em;
+    color: #9ba4e0;
+  }
+
+  /* headline — light, wide, prestige */
+  .hero-71 h1 {
+    margin-top: 22px;
+    font-size: clamp(38px, 6.2vw, 64px);
+    font-weight: 200; line-height: 1.12;
+    letter-spacing: 0.015em;
+    color: #f2f2f5;
+    text-wrap: balance;
+  }
+  .hero-71 h1 .accent {
+    font-family: Georgia, "Times New Roman", serif;
+    font-style: italic; font-weight: 400;
+    color: #aeb6f2;
+    text-shadow: 0 0 34px rgba(94,106,210,0.35);
+  }
+
+  .hero-71 .subhead {
+    margin-top: 22px;
+    max-width: 52ch;
+    font-size: clamp(15px, 1.9vw, 17px);
+    font-weight: 300; line-height: 1.75;
+    color: #a6aab4;
+  }
+
+  /* ---------- glass signup panel ---------- */
+  .hero-71 .signup {
+    margin-top: 38px;
+    display: flex; gap: 10px;
+    width: 100%; max-width: 460px;
+    padding: 10px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.07),
+      0 24px 60px -24px rgba(0,0,0,0.8),
+      0 0 80px -20px rgba(94,106,210,0.18);
+  }
+  .hero-71 .signup input {
+    flex: 1; min-width: 0;
+    padding: 13px 16px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(2,2,3,0.55);
+    color: #ededef;
+    font: 300 15px/1.2 "Helvetica Neue", "Segoe UI", Inter, Arial, sans-serif;
+    letter-spacing: 0.02em;
+    transition: border-color 0.5s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-71 .signup input::placeholder { color: #8a8f98; }
+  .hero-71 .signup input:focus,
+  .hero-71 .signup input:focus-visible {
+    outline: none;
+    border-color: rgba(94,106,210,0.75);
+    box-shadow: 0 0 0 3px rgba(94,106,210,0.25);
+  }
+  .hero-71 .signup button {
+    padding: 13px 26px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: linear-gradient(180deg, #6773dc 0%, #5E6AD2 60%, #5560c4 100%);
+    color: #ffffff;
+    font: 500 13px/1.2 "Helvetica Neue", "Segoe UI", Inter, Arial, sans-serif;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 28px rgba(94,106,210,0.35),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .hero-71 .signup button:hover {
+    box-shadow: 0 0 44px rgba(94,106,210,0.5),
+                inset 0 1px 0 rgba(255,255,255,0.25);
+  }
+  .hero-71 .signup button:active { transform: scale(0.97); }
+  .hero-71 .signup button:focus-visible {
+    outline: 2px solid #aeb6f2; outline-offset: 3px;
+  }
+
+  .hero-71 .micro {
+    margin-top: 16px;
+    font-size: 11.5px; font-weight: 400;
+    letter-spacing: 0.14em; text-transform: uppercase; text-indent: 0.14em;
+    color: #8a8f98;
+  }
+
+  /* ---------- stats: end-credits row ---------- */
+  .hero-71 .stats {
+    margin-top: 52px;
+    width: 100%;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+    list-style: none;
+    background: rgba(255,255,255,0.07); /* hairline dividers via grid gap */
+    border-top: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .hero-71 .stats li {
+    background: rgba(5,5,6,0.6);
+    padding: 20px 10px 18px;
+  }
+  .hero-71 .stats .num {
+    display: block;
+    font-weight: 200;
+    font-size: clamp(20px, 2.6vw, 26px);
+    letter-spacing: 0.04em;
+    color: #eceef6;
+  }
+  .hero-71 .stats .lbl {
+    display: block; margin-top: 8px;
+    font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #8a8f98;
+  }
+
+  @media (max-width: 620px) {
+    .hero-71 .signup { flex-direction: column; }
+    .hero-71 .signup button { width: 100%; }
+    .hero-71 .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-71 .glow-a, .hero-71 .glow-b { animation: none; }
+    .hero-71 .signup input, .hero-71 .signup button { transition: none; }
+  }
+</style>
+
+<div class="meta">
+  <span class="no">Style 71 / 84</span>
+  <span class="name">Modern Dark (Cinema Mobile)</span>
+  <span class="swatches" aria-hidden="true">
+    <i style="background:#020203"></i><i style="background:#0a0a0c"></i><i style="background:#5E6AD2"></i><i style="background:#EDEDEF"></i>
+  </span>
+  <span class="era">2020s Cinematic</span>
+</div>
+
+<section class="hero hero-71" aria-label="Newsletter hero preview">
+  <span class="glow glow-a" aria-hidden="true"></span>
+  <span class="glow glow-b" aria-hidden="true"></span>
+  <span class="vignette" aria-hidden="true"></span>
+
+  <div class="stage">
+    <div class="wordmark">Dispatch</div>
+
+    <p class="kicker">The Weekly Dispatch · Issue N°142</p>
+
+    <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch"><input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button type="submit">Subscribe</button></form>
+
+    <p class="micro">Free forever. Unsubscribe anytime.</p>
+
+    <ul class="stats">
+      <li><span class="num">24,000+</span><span class="lbl">Subscribers</span></li>
+      <li><span class="num">Weekly</span><span class="lbl">Every Friday</span></li>
+      <li><span class="num">5 min</span><span class="lbl">Average read</span></li>
+      <li><span class="num">100%</span><span class="lbl">Free, no ads</span></li>
+    </ul>
+  </div>
+</section>
