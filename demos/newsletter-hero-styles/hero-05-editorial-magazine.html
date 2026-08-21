@@ -1,0 +1,179 @@
+<style>
+  /* ============================================================
+     HERO — Editorial Grid / Magazine  (DB style No. 66)
+     Grounded in ui-ux-pro-max styles.csv row 66:
+     asymmetric grid · editorial serif · drop caps · pull quotes ·
+     section rules · high contrast B/W + one accent · WCAG AAA.
+     Committed single (paper) theme.
+     ============================================================ */
+
+  :root {
+    --paper:#fcfbf9;   /* near-white, faintly warm — chosen, not cream */
+    --ink:#151310;     /* warm near-black */
+    --red:#b3122b;     /* editorial ink red */
+    --grey:#6b6660;
+    --rule:#151310;
+
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", "Noto Serif", serif;
+    --sans: "Helvetica Neue", Arial, "Liberation Sans", sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    padding: clamp(16px, 4vw, 52px);
+    display: flex;
+    justify-content: center;
+  }
+
+  .card { width: 100%; max-width: 1080px; background: var(--paper); }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 22px; padding: 11px 4px 13px; margin-bottom: clamp(20px, 4vw, 38px);
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--grey);
+  }
+  .meta strong { color: var(--ink); font-weight: 700; }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { color: var(--red); font-weight: 700; }
+  .meta .swatches { display: flex; gap: 6px; align-items: center; }
+  .meta .sw { width: 13px; height: 13px; border: 1px solid var(--rule); display: inline-block; }
+
+  /* ==================== HERO ==================== */
+
+  /* masthead */
+  .mast { text-align: center; border-top: 3px double var(--rule); padding-top: 16px; }
+  .wordmark {
+    font-family: var(--serif); font-weight: 700; font-size: clamp(1.7rem, 4vw, 2.6rem);
+    letter-spacing: 0.02em;
+  }
+  .issue {
+    font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--grey); margin-top: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--rule);
+  }
+
+  /* headline */
+  h1 {
+    font-family: var(--serif); font-weight: 700;
+    font-size: clamp(2.4rem, 7vw, 5.4rem); line-height: 1.02; letter-spacing: -0.015em;
+    text-align: center; text-wrap: balance;
+    max-width: 16ch; margin: clamp(28px, 5vw, 52px) auto clamp(24px, 4vw, 40px);
+  }
+  h1 .accent { color: var(--red); font-style: italic; }
+
+  /* two-column editorial spread */
+  .spread {
+    display: grid; grid-template-columns: 1.7fr 1fr; gap: clamp(24px, 4vw, 48px);
+    border-top: 1px solid var(--rule); padding-top: clamp(24px, 4vw, 38px);
+  }
+
+  .standfirst {
+    font-size: clamp(1.05rem, 1.5vw, 1.28rem); line-height: 1.6; color: #29241f;
+    max-width: 60ch; margin: 0;
+  }
+  .standfirst::first-letter {
+    float: left; font-family: var(--serif); font-weight: 700; color: var(--red);
+    font-size: 3.9em; line-height: 0.72; padding: 6px 10px 0 0;
+  }
+
+  /* signup — editorial inline */
+  form.signup {
+    margin: 30px 0 0; display: flex; gap: 0; max-width: 480px;
+    border: 1.5px solid var(--rule);
+  }
+  form.signup input {
+    flex: 1 1 200px; min-width: 0; border: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--serif); font-size: 1rem; padding: 14px 16px;
+  }
+  form.signup input::placeholder { color: #9c968e; font-style: italic; }
+  form.signup input:focus-visible { outline: 2px solid var(--red); outline-offset: -2px; }
+  form.signup button {
+    flex: 0 0 auto; border: 0; border-left: 1.5px solid var(--rule);
+    background: var(--ink); color: var(--paper);
+    font-family: var(--sans); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 14px 26px; cursor: pointer; transition: background .2s ease;
+  }
+  form.signup button:hover, form.signup button:focus-visible { background: var(--red); outline: none; }
+  .microcopy {
+    margin: 12px 0 0; font-family: var(--sans); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--grey);
+  }
+
+  /* stats as a bordered index sidebar */
+  .stats {
+    border-left: 1px solid var(--rule); padding-left: clamp(20px, 3vw, 32px);
+    display: flex; flex-direction: column;
+  }
+  .stat { padding: 14px 0; border-bottom: 1px solid #dcd8d0; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+  .stat:first-child { padding-top: 0; }
+  .stat:last-child { border-bottom: 0; }
+  .stat .n { font-family: var(--serif); font-weight: 700; font-size: 1.5rem; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { font-family: var(--sans); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grey); text-align: right; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(12px); animation: rise .6s ease forwards; }
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+
+  @media (max-width: 720px) {
+    .spread { grid-template-columns: 1fr; }
+    .stats { border-left: 0; padding-left: 0; border-top: 1px solid var(--rule); padding-top: 18px; margin-top: 6px; }
+  }
+</style>
+
+<div class="card">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 66 / 84</span>
+      <strong>Editorial Grid / Magazine</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#151310"></span>
+      <span class="sw" style="background:#fcfbf9"></span>
+      <span class="sw" style="background:#b3122b"></span>
+      <span class="sw" style="background:#6b6660"></span>
+      <span>Print-inspired · Serif</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="mast reveal d1">
+      <div class="wordmark">Dispatch</div>
+      <div class="issue">The Weekly Dispatch · Issue N°142</div>
+    </div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <div class="spread">
+      <div>
+        <p class="standfirst reveal d3">
+          One email every Friday. Big ideas, clear thinking, and zero noise —
+          for 24,000 readers who like their insights sharp and their inboxes calm.
+        </p>
+        <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+          <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+      </div>
+
+      <aside class="stats reveal d4" aria-label="At a glance">
+        <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+        <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+        <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+        <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+      </aside>
+    </div>
+  </section>
+</div>

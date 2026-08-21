@@ -1,0 +1,150 @@
+<style>
+  /* ============================================================
+     HERO — Dark Mode (OLED)  (DB style No. 07)
+     Grounded in ui-ux-pro-max styles.csv row 7:
+     deep black #000 · dark grey #121212 · vibrant neon accent ·
+     minimal glow (text-shadow 0 0 10px) · high-contrast white text ·
+     visible focus · WCAG AAA · OLED power-efficient.
+     One neon accent spent boldly; everything else white/grey.
+     Committed dark theme.
+     ============================================================ */
+
+  :root {
+    --black:#000000; --panel:#0d0d0f; --panel-2:#121214; --edge:#232327;
+    --text:#ffffff; --muted:#9a9aa2;
+    --neon:#39ff14;  /* the one neon accent */
+    --sans: "Helvetica Neue", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    background: var(--black); color: var(--text); font-family: var(--sans);
+    line-height: 1.6; padding: clamp(16px, 4vw, 52px); display: flex; justify-content: center;
+    -webkit-font-smoothing: antialiased; position: relative; overflow-x: hidden;
+  }
+  /* very subtle neon glow behind headline */
+  body::before {
+    content:""; position: fixed; top: -10%; left: 50%; transform: translateX(-50%);
+    width: 60vw; height: 40vh; pointer-events: none; z-index: 0;
+    background: radial-gradient(closest-side, rgba(57,255,20,0.10), transparent 75%);
+  }
+
+  .wrap { width: 100%; max-width: 980px; position: relative; z-index: 1; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 12px 20px; padding: 11px 16px; margin-bottom: clamp(20px, 4vw, 36px);
+    background: var(--panel); border: 1px solid var(--edge); border-radius: 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.03em; text-transform: uppercase; color: var(--muted);
+  }
+  .meta strong { color: var(--text); font-weight: 700; }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { color: var(--neon); font-weight: 700; }
+  .meta .swatches { display: flex; gap: 6px; align-items: center; }
+  .meta .sw { width: 13px; height: 13px; border-radius: 4px; border: 1px solid var(--edge); display: inline-block; }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    background: var(--panel); border: 1px solid var(--edge); border-radius: 18px;
+    padding: clamp(32px, 5vw, 64px) clamp(24px, 4vw, 56px);
+  }
+
+  .brand { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 26px; }
+  .brand .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--neon); box-shadow: 0 0 10px var(--neon); }
+  .brand .name { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.01em; }
+
+  .kicker {
+    display: inline-block; margin-bottom: 24px; padding: 6px 14px; border-radius: 999px;
+    background: var(--panel-2); border: 1px solid var(--edge);
+    font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+  }
+
+  h1 {
+    font-size: clamp(2.3rem, 7vw, 5rem); line-height: 1.03; letter-spacing: -0.02em; font-weight: 800;
+    margin: 0; max-width: 16ch; color: var(--text);
+  }
+  h1 .accent { color: var(--neon); text-shadow: 0 0 14px rgba(57,255,20,0.55); }
+
+  .subhead { font-size: clamp(1.02rem, 1.4vw, 1.2rem); color: var(--muted); max-width: 56ch; margin: 24px 0 0; }
+
+  /* signup */
+  form.signup { margin: 34px 0 0; display: flex; gap: 12px; max-width: 500px; flex-wrap: wrap; }
+  form.signup input {
+    flex: 1 1 220px; min-width: 0; border: 1px solid var(--edge); border-radius: 10px; background: var(--panel-2); color: var(--text);
+    font-family: var(--sans); font-size: 1rem; padding: 14px 16px; transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  form.signup input::placeholder { color: #6b6b73; }
+  form.signup input:focus-visible { outline: none; border-color: var(--neon); box-shadow: 0 0 0 3px rgba(57,255,20,0.22); }
+  form.signup button {
+    flex: 0 0 auto; cursor: pointer; border: 1px solid var(--neon); border-radius: 10px;
+    background: var(--neon); color: #04240a; font-family: var(--sans); font-size: 0.95rem; font-weight: 800; letter-spacing: 0.02em;
+    padding: 14px 30px; box-shadow: 0 0 18px rgba(57,255,20,0.35); transition: box-shadow .2s ease, transform .2s ease;
+  }
+  form.signup button:hover { transform: translateY(-1px); box-shadow: 0 0 28px rgba(57,255,20,0.6); }
+  form.signup button:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+  .microcopy { margin: 14px 0 0; font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.03em; color: var(--muted); }
+
+  /* stats — dark cards with a neon accent line */
+  .stats { margin: clamp(34px, 5vw, 46px) 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat { background: var(--panel-2); border: 1px solid var(--edge); border-radius: 12px; padding: 16px 14px; border-top: 2px solid var(--neon); }
+  .stat .n { font-size: 1.45rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; color: var(--text); }
+  .stat .l { display: block; margin-top: 7px; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise .6s ease forwards; }
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+
+  @media (max-width: 620px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
+<div class="wrap">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 07 / 84</span>
+      <strong>Dark Mode (OLED)</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#000000"></span>
+      <span class="sw" style="background:#121214"></span>
+      <span class="sw" style="background:#39ff14"></span>
+      <span>Night · OLED</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="brand reveal d1">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="name">Dispatch</span>
+    </div>
+
+    <div><span class="kicker reveal d1">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

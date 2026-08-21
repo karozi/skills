@@ -1,0 +1,301 @@
+<style>
+  /* ============ STYLE 41 — CYBERPUNK UI ============ */
+  .meta, .hero { box-sizing: border-box; }
+  .meta *, .hero * { box-sizing: inherit; }
+
+  .meta {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
+    background: #050505;
+    color: #9aa3ad;
+    font-family: "SFMono-Regular", ui-monospace, "Cascadia Mono", Menlo, Consolas, monospace;
+    font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+    padding: 10px 18px;
+    border-bottom: 1px solid #1c2126;
+  }
+  .meta .no { color: #FCEE0A; font-weight: 700; }
+  .meta .name { color: #e8edf2; font-weight: 700; }
+  .meta .swatches { display: inline-flex; gap: 6px; }
+  .meta .swatches i {
+    width: 14px; height: 14px; display: inline-block;
+    outline: 1px solid rgba(255,255,255,.25);
+  }
+  .meta .era { margin-left: auto; color: #6b7681; }
+
+  /* ---------------- HERO ---------------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(rgba(0,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,255,255,.035) 1px, transparent 1px),
+      radial-gradient(ellipse 90% 70% at 50% -10%, rgba(255,0,255,.10), transparent 60%),
+      #0D0D0D;
+    background-size: 34px 34px, 34px 34px, 100% 100%, 100% 100%;
+    color: #e8edf2;
+    font-family: "SFMono-Regular", ui-monospace, "Cascadia Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    padding: 64px 24px 72px;
+    text-align: center;
+    border-top: 1px solid #00FFFF;
+    border-bottom: 1px solid #FF00FF;
+  }
+  /* scanlines */
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0; z-index: 3; pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 2px,
+      rgba(0,0,0,.22) 3px, rgba(0,0,0,0) 4px
+    );
+    opacity: .5;
+    mix-blend-mode: multiply;
+  }
+  /* roaming scan bar */
+  .hero::after {
+    content: "";
+    position: absolute; left: 0; right: 0; top: -20%; height: 90px;
+    z-index: 2; pointer-events: none;
+    background: linear-gradient(to bottom, transparent, rgba(0,255,255,.07), transparent);
+    animation: scan 7s linear infinite;
+  }
+  @keyframes scan { 0% { top: -20%; } 100% { top: 120%; } }
+
+  .hero .frame {
+    position: relative; z-index: 4;
+    max-width: 880px; margin: 0 auto;
+    padding: 48px 28px 40px;
+    background: rgba(5,6,8,.72);
+    border: 1px solid rgba(0,255,255,.35);
+    clip-path: polygon(
+      24px 0, calc(100% - 24px) 0, 100% 24px,
+      100% calc(100% - 24px), calc(100% - 24px) 100%,
+      24px 100%, 0 calc(100% - 24px), 0 24px
+    );
+  }
+  /* warning stripes along the frame top and bottom */
+  .stripe {
+    position: absolute; left: 24px; right: 24px; height: 7px;
+    background: repeating-linear-gradient(
+      -45deg,
+      #FCEE0A 0 12px, #0D0D0D 12px 24px
+    );
+    opacity: .85;
+  }
+  .stripe.top { top: 0; }
+  .stripe.bottom { bottom: 0; }
+
+  /* corner brackets */
+  .corner {
+    position: absolute; width: 26px; height: 26px; z-index: 5;
+    border: 2px solid #00FFFF;
+    filter: drop-shadow(0 0 6px rgba(0,255,255,.8));
+  }
+  .corner.tl { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
+  .corner.tr { top: 10px; right: 10px; border-left: 0; border-bottom: 0; }
+  .corner.bl { bottom: 10px; left: 10px; border-right: 0; border-top: 0; }
+  .corner.br { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
+  .corner.tl::after { content: "SYS//"; position: absolute; top: 2px; left: 6px; font: 700 9px/1 inherit; font-family: inherit; color: #00FFFF; letter-spacing: .15em; }
+  .corner.br::after { content: "//041"; position: absolute; bottom: 2px; right: 6px; font-size: 9px; font-weight: 700; color: #FF00FF; letter-spacing: .15em; }
+
+  .wordmark {
+    display: inline-block;
+    font-size: 15px; font-weight: 700;
+    letter-spacing: .5em; text-indent: .5em; text-transform: uppercase;
+    color: #0D0D0D;
+    background: #FCEE0A;
+    padding: 7px 16px 7px 20px;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    box-shadow: 0 0 18px rgba(252,238,10,.45);
+  }
+
+  .kicker {
+    margin: 22px 0 0;
+    font-size: 12px; letter-spacing: .28em; text-transform: uppercase;
+    color: #00FFFF;
+    text-shadow: 0 0 10px rgba(0,255,255,.75);
+  }
+  .kicker::before { content: "["; color: #FF00FF; margin-right: 8px; }
+  .kicker::after { content: "]"; color: #FF00FF; margin-left: 8px; }
+
+  .hero h1 {
+    margin: 18px auto 0;
+    max-width: 760px;
+    font-size: clamp(2rem, 6vw, 3.6rem);
+    line-height: 1.08;
+    font-weight: 800;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    color: #f4f7fa;
+    text-shadow: 0 0 14px rgba(0,255,255,.28);
+  }
+  .hero h1 .accent {
+    position: relative;
+    color: #FF00FF;
+    text-shadow:
+      0 0 12px rgba(255,0,255,.9),
+      0 0 34px rgba(255,0,255,.5);
+    animation: glitch 3.2s steps(1) infinite;
+  }
+  @keyframes glitch {
+    0%, 92%, 100% { transform: none; text-shadow: 0 0 12px rgba(255,0,255,.9), 0 0 34px rgba(255,0,255,.5); }
+    93% { transform: translate(-3px, 1px) skewX(-8deg); text-shadow: -3px 0 #00FFFF, 3px 0 #FCEE0A; }
+    95% { transform: translate(3px, -1px) skewX(6deg); text-shadow: 3px 0 #00FFFF, -3px 0 #FF00FF; }
+    97% { transform: translate(-1px, 0); text-shadow: -2px 0 #FCEE0A, 2px 0 #00FFFF; }
+  }
+
+  .hero .sub {
+    margin: 20px auto 0;
+    max-width: 620px;
+    font-size: 15.5px;
+    line-height: 1.75;
+    color: #cdd6de;
+  }
+
+  .signup {
+    margin: 30px auto 0;
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 12px;
+    max-width: 560px;
+  }
+  .signup input[type="email"] {
+    flex: 1 1 260px;
+    min-width: 0;
+    font-family: inherit;
+    font-size: 15px;
+    color: #00FFFF;
+    background: #07090b;
+    border: 1px solid rgba(0,255,255,.55);
+    padding: 14px 16px;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    caret-color: #FF00FF;
+  }
+  .signup input[type="email"]::placeholder { color: #5f6b75; }
+  .signup input[type="email"]:focus {
+    outline: 2px solid #00FFFF;
+    outline-offset: 2px;
+    box-shadow: 0 0 18px rgba(0,255,255,.55);
+  }
+  .signup button {
+    flex: 0 0 auto;
+    font-family: inherit;
+    font-size: 14px; font-weight: 800;
+    letter-spacing: .22em; text-transform: uppercase;
+    color: #0D0D0D;
+    background: #FCEE0A;
+    border: 0;
+    padding: 14px 28px;
+    cursor: pointer;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+    box-shadow: 0 0 20px rgba(252,238,10,.4);
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .signup button:hover {
+    background: #00FFFF;
+    box-shadow: 0 0 26px rgba(0,255,255,.7);
+  }
+  .signup button:focus-visible {
+    outline: 2px solid #FF00FF;
+    outline-offset: 3px;
+    box-shadow: 0 0 24px rgba(255,0,255,.7);
+  }
+  .signup button:active { transform: translateY(1px); }
+
+  .micro {
+    margin: 16px 0 0;
+    font-size: 12px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: #9aa3ad;
+  }
+  .micro::before { content: ">_ "; color: #00FF00; text-shadow: 0 0 8px rgba(0,255,0,.8); }
+
+  .stats {
+    margin: 40px auto 0;
+    max-width: 780px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    text-align: left;
+  }
+  .stats li {
+    position: relative;
+    background: rgba(10,12,14,.85);
+    border: 1px solid #21282e;
+    border-left: 3px solid #FF00FF;
+    padding: 14px 14px 12px;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  }
+  .stats li:nth-child(2) { border-left-color: #00FFFF; }
+  .stats li:nth-child(3) { border-left-color: #FCEE0A; }
+  .stats li:nth-child(4) { border-left-color: #00FF00; }
+  .stats li::after {
+    content: "▮▮▯"; position: absolute; top: 6px; right: 10px;
+    font-size: 8px; color: #39434c; letter-spacing: 2px;
+  }
+  .stats .num {
+    display: block;
+    font-size: 22px; font-weight: 800;
+    color: #f4f7fa;
+    text-shadow: 0 0 10px rgba(0,255,255,.35);
+  }
+  .stats .lbl {
+    display: block; margin-top: 4px;
+    font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+    color: #8f99a3;
+  }
+
+  @media (max-width: 560px) {
+    .hero { padding: 44px 12px 52px; }
+    .hero .frame { padding: 40px 16px 34px; }
+    .signup button { flex: 1 1 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero::after { animation: none; display: none; }
+    .hero h1 .accent { animation: none; }
+    .signup button { transition: none; }
+  }
+</style>
+
+<div class="meta">
+  <span class="no">STYLE 41 / 84</span>
+  <span class="name">Cyberpunk UI</span>
+  <span class="swatches" aria-hidden="true">
+    <i style="background:#0D0D0D"></i>
+    <i style="background:#00FFFF"></i>
+    <i style="background:#FF00FF"></i>
+    <i style="background:#FCEE0A"></i>
+  </span>
+  <span class="era">2020s Tech Noir</span>
+</div>
+
+<section class="hero" aria-label="Newsletter hero preview">
+  <div class="frame">
+    <span class="stripe top" aria-hidden="true"></span>
+    <span class="stripe bottom" aria-hidden="true"></span>
+    <span class="corner tl" aria-hidden="true"></span>
+    <span class="corner tr" aria-hidden="true"></span>
+    <span class="corner bl" aria-hidden="true"></span>
+    <span class="corner br" aria-hidden="true"></span>
+
+    <div class="wordmark">Dispatch</div>
+    <p class="kicker">The Weekly Dispatch · Issue N°142</p>
+    <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+    <p class="sub">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="micro">Free forever. Unsubscribe anytime.</p>
+
+    <ul class="stats">
+      <li><span class="num">24,000+</span><span class="lbl">Subscribers</span></li>
+      <li><span class="num">Weekly</span><span class="lbl">Every Friday</span></li>
+      <li><span class="num">5 min</span><span class="lbl">Average read</span></li>
+      <li><span class="num">100%</span><span class="lbl">Free, no ads</span></li>
+    </ul>
+  </div>
+</section>

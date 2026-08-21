@@ -1,0 +1,379 @@
+<style>
+  /* ============ STYLE 13 — SKEUOMORPHISM (2007–2012 iOS) ============ */
+  .skeu-wrap, .skeu-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .skeu-wrap {
+    font-family: "Helvetica Neue", "Lucida Grande", Helvetica, Arial, "Segoe UI", system-ui, sans-serif;
+    color: #3a2f24;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 24px 16px 48px;
+  }
+
+  /* ---------- catalog meta bar (outside hero) ---------- */
+  .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 10px 16px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #fdfdfc 0%, #ececea 100%);
+    border: 1px solid #c9c6c0;
+    box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 1px 3px rgba(0,0,0,.15);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #6b6459;
+  }
+  .meta .num { font-weight: 700; color: #3a2f24; }
+  .meta .name { font-weight: 700; color: #7a4a21; }
+  .meta .swatches { display: flex; gap: 6px; margin-left: auto; }
+  .meta .swatches i {
+    width: 16px; height: 16px; border-radius: 4px; display: inline-block;
+    border: 1px solid rgba(0,0,0,.35);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 1px 1px rgba(0,0,0,.2);
+  }
+  .meta .era {
+    font-style: italic; text-transform: none; letter-spacing: .02em; color: #8a8276;
+  }
+
+  /* ---------- hero shell: walnut desk + paper sheet ---------- */
+  .hero {
+    position: relative;
+    border-radius: 14px;
+    padding: 0;
+    overflow: hidden;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.28' numOctaves='4' seed='7'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.35'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='240' height='240' fill='%233a2213'/%3E%3Crect width='240' height='240' filter='url(%23w)' opacity='0.5'/%3E%3C/svg%3E"),
+      linear-gradient(160deg, #5a3a22 0%, #4a2d18 30%, #3c2312 55%, #331d0e 80%, #2b180c 100%);
+    box-shadow:
+      inset 0 2px 3px rgba(255,255,255,.18),
+      inset 0 -3px 8px rgba(0,0,0,.55),
+      0 1px 0 rgba(255,255,255,.6),
+      0 12px 28px rgba(30,16,5,.45),
+      0 30px 60px rgba(30,16,5,.35);
+    border: 1px solid #241206;
+  }
+
+  /* ---------- stitched leather header bar ---------- */
+  .skeu-bar {
+    position: relative;
+    padding: 18px 24px 20px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='l'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='5' seed='11'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.14'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23l)'/%3E%3C/svg%3E"),
+      radial-gradient(120% 180% at 50% -40%, rgba(255,255,255,.22) 0%, rgba(255,255,255,0) 55%),
+      linear-gradient(180deg,
+        #8a4f2d 0%, #7d452a 12%, #71402a 24%, #683a26 38%,
+        #5e3421 52%, #562e1d 66%, #4d2919 80%, #452414 92%, #3e1f10 100%);
+    border-bottom: 1px solid #2a1508;
+    box-shadow:
+      inset 0 1px 0 rgba(255,220,170,.35),
+      inset 0 -2px 4px rgba(0,0,0,.45),
+      0 3px 6px rgba(0,0,0,.4);
+    text-align: center;
+  }
+  /* stitching rows */
+  .skeu-bar::before, .skeu-bar::after {
+    content: "";
+    position: absolute;
+    left: 10px; right: 10px;
+    height: 0;
+    border-top: 2px dashed rgba(240,214,166,.75);
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,.55));
+    pointer-events: none;
+  }
+  .skeu-bar::before { top: 6px; }
+  .skeu-bar::after  { bottom: 6px; }
+
+  .wordmark {
+    display: inline-block;
+    font-family: Georgia, "Times New Roman", "Palatino Linotype", serif;
+    font-size: clamp(30px, 5vw, 40px);
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: #f3dfae;
+    background: linear-gradient(180deg, #fdf3d0 0%, #f4dfa6 28%, #e4c47c 50%, #caa055 62%, #e0be74 82%, #f0d896 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter:
+      drop-shadow(0 1px 0 rgba(0,0,0,.75))
+      drop-shadow(0 -1px 0 rgba(255,244,214,.28))
+      drop-shadow(0 2px 3px rgba(0,0,0,.5));
+  }
+
+  /* ---------- paper / linen sheet ---------- */
+  .sheet {
+    position: relative;
+    margin: 26px clamp(14px, 4vw, 38px) clamp(22px, 4vw, 38px);
+    padding: clamp(26px, 5vw, 52px) clamp(20px, 5vw, 56px) clamp(26px, 5vw, 44px);
+    border-radius: 6px;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' seed='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.07'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23p)'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='6'%3E%3Crect width='6' height='6' fill='none'/%3E%3Cpath d='M0 3h6' stroke='%23d8cfba' stroke-width='1' opacity='0.35'/%3E%3Cpath d='M3 0v6' stroke='%23e2dac6' stroke-width='1' opacity='0.28'/%3E%3C/svg%3E"),
+      radial-gradient(140% 100% at 50% 0%, #faf5e8 0%, #f3ecda 45%, #ebe2cc 78%, #e3d8bf 100%);
+    border: 1px solid #cfc3a8;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      inset 0 0 40px rgba(120,95,55,.12),
+      0 1px 2px rgba(0,0,0,.25),
+      0 6px 14px rgba(25,12,4,.45),
+      0 16px 32px rgba(25,12,4,.35);
+    text-align: center;
+  }
+  /* curled-corner shadow under the sheet */
+  .sheet::after {
+    content: "";
+    position: absolute;
+    left: 6%; right: 6%; bottom: -8px;
+    height: 14px;
+    border-radius: 50%;
+    background: radial-gradient(50% 100% at 50% 0%, rgba(15,8,2,.4), rgba(15,8,2,0) 75%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .kicker {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: #8b7a58;
+    text-shadow: 0 1px 0 rgba(255,255,255,.9); /* letterpress engrave */
+    padding: 7px 18px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #e8dfc8 0%, #efe7d2 50%, #f6f0df 100%);
+    border: 1px solid #cbbf9f;
+    box-shadow:
+      inset 0 2px 3px rgba(110,90,50,.28),
+      inset 0 -1px 0 rgba(255,255,255,.8),
+      0 1px 0 rgba(255,255,255,.9);
+  }
+
+  .headline {
+    margin: 22px auto 16px;
+    max-width: 15ch;
+    font-family: Georgia, "Times New Roman", "Palatino Linotype", serif;
+    font-size: clamp(34px, 6.4vw, 58px);
+    line-height: 1.08;
+    font-weight: 700;
+    color: #40331f;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,.85),
+      0 -1px 0 rgba(60,40,10,.25); /* embossed press */
+  }
+  .headline .accent {
+    color: #8c2f1b;
+    background: linear-gradient(180deg, #b8492c 0%, #a83d22 45%, #8c2c15 55%, #7a2410 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 0 rgba(255,255,255,.75));
+  }
+
+  .subhead {
+    max-width: 52ch;
+    margin: 0 auto;
+    font-size: clamp(15px, 2.2vw, 17px);
+    line-height: 1.65;
+    color: #5d4f38;
+    text-shadow: 0 1px 0 rgba(255,255,255,.7);
+  }
+
+  /* ---------- signup: inset well + glossy 3D button ---------- */
+  .signup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin: 28px auto 0;
+    max-width: 520px;
+  }
+  .signup input[type="email"] {
+    flex: 1 1 240px;
+    min-width: 0;
+    font: inherit;
+    font-size: 16px;
+    color: #453823;
+    padding: 13px 16px;
+    border-radius: 8px;
+    border: 1px solid #b3a684;
+    border-top-color: #9c8f6d;
+    background: linear-gradient(180deg, #efe9d8 0%, #f8f4e7 18%, #fffdf4 100%);
+    box-shadow:
+      inset 0 2px 4px rgba(95,75,40,.35),
+      inset 0 1px 1px rgba(60,45,20,.25),
+      0 1px 0 rgba(255,255,255,.9);
+  }
+  .signup input[type="email"]::placeholder { color: #a2926e; }
+  .signup input[type="email"]:focus,
+  .signup input[type="email"]:focus-visible {
+    outline: none;
+    border-color: #7a9bc0;
+    box-shadow:
+      inset 0 2px 4px rgba(95,75,40,.3),
+      0 0 0 3px rgba(85,140,200,.45),
+      0 1px 0 rgba(255,255,255,.9);
+  }
+
+  .signup button {
+    flex: 0 0 auto;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,40,80,.55);
+    padding: 13px 30px;
+    border-radius: 9px;
+    cursor: pointer;
+    border: 1px solid #1d4d79;
+    border-top-color: #3f77a8;
+    background: linear-gradient(180deg,
+      #b6d9f2 0%, #8fc3ea 8%, #6aade0 20%, #4f97d3 34%,
+      #3d86c6 48%, #2e74b4 50%, #2769a8 62%, #1f5c99 76%,
+      #1a538d 88%, #164a80 100%); /* 10-stop gloss */
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.75),
+      inset 0 -2px 4px rgba(0,25,55,.45),
+      0 1px 0 rgba(255,255,255,.6),
+      0 3px 5px rgba(15,35,60,.45),
+      0 7px 14px rgba(15,35,60,.3);
+    transition: transform 320ms ease, box-shadow 320ms ease, filter 320ms ease;
+  }
+  .signup button:hover { filter: brightness(1.06); }
+  .signup button:active {
+    transform: scale(.97) translateY(1px);
+    box-shadow:
+      inset 0 2px 5px rgba(0,25,55,.55),
+      inset 0 1px 0 rgba(0,25,55,.3),
+      0 1px 0 rgba(255,255,255,.6),
+      0 1px 2px rgba(15,35,60,.4);
+  }
+  .signup button:focus-visible {
+    outline: 3px solid rgba(85,140,200,.9);
+    outline-offset: 2px;
+  }
+
+  .microcopy {
+    margin-top: 14px;
+    font-size: 12.5px;
+    letter-spacing: .04em;
+    color: #8b7a58;
+    text-shadow: 0 1px 0 rgba(255,255,255,.85);
+  }
+
+  /* ---------- stats: riveted brass plaques ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 14px;
+    margin-top: 34px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(120,95,55,.3);
+    box-shadow: 0 1px 0 rgba(255,255,255,.7) inset;
+  }
+  .stat {
+    position: relative;
+    padding: 16px 12px 14px;
+    border-radius: 8px;
+    background:
+      radial-gradient(130% 90% at 50% -20%, rgba(255,255,255,.65) 0%, rgba(255,255,255,0) 60%),
+      linear-gradient(180deg, #f2ead4 0%, #ece2c8 45%, #e2d5b5 55%, #d9caa6 100%);
+    border: 1px solid #bfb08b;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,.85),
+      inset 0 -2px 3px rgba(110,90,50,.22),
+      0 2px 4px rgba(40,25,8,.28),
+      0 5px 10px rgba(40,25,8,.18);
+  }
+  /* corner rivets */
+  .stat::before, .stat::after {
+    content: "";
+    position: absolute;
+    top: 6px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #fdf6e0 0%, #cdbc92 45%, #8f7c52 100%);
+    box-shadow: 0 1px 1px rgba(0,0,0,.4), inset 0 -1px 1px rgba(0,0,0,.3);
+    pointer-events: none;
+  }
+  .stat::before { left: 6px; }
+  .stat::after  { right: 6px; }
+
+  .stat b {
+    display: block;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 700;
+    color: #6e4a1e;
+    text-shadow: 0 1px 0 rgba(255,255,255,.85), 0 -1px 0 rgba(70,45,10,.2);
+  }
+  .stat span {
+    display: block;
+    margin-top: 4px;
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: #8b7a58;
+    text-shadow: 0 1px 0 rgba(255,255,255,.8);
+  }
+
+  @media (max-width: 560px) {
+    .signup { flex-direction: column; }
+    .signup button { width: 100%; }
+    .meta .swatches { margin-left: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skeu-wrap *, .skeu-wrap *::before, .skeu-wrap *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+  }
+</style>
+
+<div class="skeu-wrap">
+
+  <div class="meta">
+    <span class="num">STYLE 13&nbsp;/&nbsp;84</span>
+    <span class="name">Skeuomorphism</span>
+    <span class="era">Pre-2013 iOS richness</span>
+    <span class="swatches" aria-hidden="true">
+      <i style="background:#5e3421"></i>
+      <i style="background:#f3ecda"></i>
+      <i style="background:#2e74b4"></i>
+      <i style="background:#e4c47c"></i>
+    </span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="skeu-bar">
+      <span class="wordmark">Dispatch</span>
+    </div>
+
+    <div class="sheet">
+      <p class="kicker">The Weekly Dispatch · Issue N°142</p>
+
+      <h1 class="headline">The ideas worth your <span class="accent">inbox.</span></h1>
+
+      <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+      <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch"><input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button type="submit">Subscribe</button></form>
+
+      <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+      <div class="stats">
+        <div class="stat"><b>24,000+</b><span>Subscribers</span></div>
+        <div class="stat"><b>Weekly</b><span>Every Friday</span></div>
+        <div class="stat"><b>5 min</b><span>Average read</span></div>
+        <div class="stat"><b>100%</b><span>Free, no ads</span></div>
+      </div>
+    </div>
+  </section>
+
+</div>

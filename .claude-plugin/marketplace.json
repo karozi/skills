@@ -38,6 +38,15 @@
         "./theme-factory",
         "./brand-guidelines"
       ]
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "description": "UI/UX design intelligence. Searchable local database with 84 styles, 192 color palettes, 74 font pairings, 98 UX guidelines, 25 charts, and 22 stacks (React, Next.js, Vue, Nuxt, Svelte, Astro, SwiftUI, React Native, Flutter, Tailwind, shadcn/ui, Jetpack Compose, Angular, Laravel, JavaFX, WPF, WinUI, Avalonia, Uno, UWP, Three.js). Use when designing, building, or reviewing UI: pages, components, color schemes, typography, layout, accessibility, animation, or data visualization.",
+      "source": "./",
+      "strict": false,
+      "skills": [
+        "./ui-ux-pro-max"
+      ]
     }
   ]
 }

@@ -1,0 +1,114 @@
+<style>
+  /* ============================================================
+     HERO — Bento Grids  (DB style No. 53)
+     Grounded in styles.csv row 53: Apple-style modular cards ·
+     off-white #F5F5F7 ground · rounded soft cards · hover scale
+     1.02 · soft shadow expansion · clean hierarchy · WCAG AA.
+     Every content piece lives in its own bento tile.
+     ============================================================ */
+  :root {
+    --ground:#f5f5f7; --card:#ffffff; --ink:#1d1d1f; --muted:#6e6e73; --accent:#5e5ce6;
+    --sans:-apple-system,"SF Pro Display","Helvetica Neue","Segoe UI",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --r:22px; --sh:0 2px 14px rgba(0,0,0,.06); --sh-hover:0 10px 30px rgba(0,0,0,.12);
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--ground);color:var(--ink);font-family:var(--sans);line-height:1.5;
+    padding:clamp(16px,4vw,52px);display:flex;justify-content:center;-webkit-font-smoothing:antialiased}
+  .wrap{width:100%;max-width:1020px}
+
+  .meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px;
+    padding:11px 18px;margin-bottom:clamp(18px,3vw,28px);background:var(--card);border-radius:16px;box-shadow:var(--sh);
+    font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+  .meta strong{color:var(--ink);font-weight:700}
+  .meta .meta-left{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .meta .idx{color:var(--accent);font-weight:700}
+  .meta .swatches{display:flex;gap:6px;align-items:center}
+  .meta .sw{width:13px;height:13px;border-radius:5px;border:1px solid #e5e5ea;display:inline-block}
+
+  /* bento grid */
+  .hero{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .tile{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:26px;
+    transition:transform .25s ease, box-shadow .25s ease}
+  .tile:hover{transform:scale(1.02);box-shadow:var(--sh-hover)}
+
+  .t-brand{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:18px 26px}
+  .wordmark{font-weight:700;font-size:1.15rem;letter-spacing:-.01em}
+  .kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+  .t-head{grid-column:1/3;grid-row:2/4;display:flex;flex-direction:column;justify-content:center}
+  h1{font-size:clamp(2.2rem,5.5vw,4rem);line-height:1.03;letter-spacing:-.03em;font-weight:700;margin:0;text-wrap:balance}
+  h1 .accent{color:var(--accent)}
+  .subhead{font-size:clamp(1rem,1.3vw,1.12rem);color:var(--muted);max-width:46ch;margin:18px 0 0}
+
+  .t-cta{grid-column:3;grid-row:2/4;display:flex;flex-direction:column;justify-content:center;
+    background:linear-gradient(160deg,var(--accent),#7d7aff);color:#fff}
+  form.signup{display:flex;flex-direction:column;gap:10px}
+  form.signup input{border:0;border-radius:12px;background:rgba(255,255,255,.92);color:var(--ink);
+    font-family:var(--sans);font-size:.95rem;padding:13px 15px;width:100%}
+  form.signup input::placeholder{color:#8e8e93}
+  form.signup input:focus-visible{outline:3px solid rgba(255,255,255,.7);outline-offset:1px}
+  form.signup button{border:0;border-radius:12px;background:var(--ink);color:#fff;cursor:pointer;
+    font-family:var(--sans);font-size:.95rem;font-weight:700;padding:13px;transition:transform .2s,opacity .2s}
+  form.signup button:hover{transform:scale(1.02);opacity:.92}
+  form.signup button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+  .microcopy{margin:12px 0 0;font-size:.76rem;color:rgba(255,255,255,.85)}
+
+  .stat{padding:22px 24px}
+  .stat .n{font-size:1.7rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1}
+  .stat .l{display:block;margin-top:7px;font-size:.72rem;color:var(--muted);font-weight:600}
+  .stat:nth-of-type(4) .n{color:var(--accent)}
+
+  .stats-row{display:contents}
+
+  .reveal{opacity:0;transform:translateY(12px);animation:rise .55s ease forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}
+  .d4{animation-delay:.29s}.d5{animation-delay:.34s}.d6{animation-delay:.39s}.d7{animation-delay:.44s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.reveal{animation:none;opacity:1;transform:none}.tile:hover{transform:none}}
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:repeat(2,1fr)}
+    .t-head{grid-column:1/-1;grid-row:auto}
+    .t-cta{grid-column:1/-1;grid-row:auto}
+  }
+</style>
+
+<div class="wrap">
+  <div class="meta">
+    <span class="meta-left"><span class="idx">STYLE 53 / 84</span><strong>Bento Grids</strong></span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#f5f5f7"></span><span class="sw" style="background:#ffffff"></span>
+      <span class="sw" style="background:#1d1d1f"></span><span class="sw" style="background:#5e5ce6"></span>
+      <span>Apple-style · Modular</span>
+    </span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="tile t-brand reveal d1">
+      <span class="wordmark">Dispatch</span>
+      <span class="kicker">The Weekly Dispatch · Issue N°142</span>
+    </div>
+
+    <div class="tile t-head reveal d2">
+      <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+      <p class="subhead">
+        One email every Friday. Big ideas, clear thinking, and zero noise —
+        for 24,000 readers who like their insights sharp and their inboxes calm.
+      </p>
+    </div>
+
+    <div class="tile t-cta reveal d3">
+      <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+        <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+    </div>
+
+    <div class="tile stat reveal d4"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+    <div class="tile stat reveal d5"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+    <div class="tile stat reveal d6"><span class="n">5 min</span><span class="l">Average read</span></div>
+    <div class="tile stat reveal d7"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+  </section>
+</div>

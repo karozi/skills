@@ -1,0 +1,127 @@
+<style>
+  /* ============================================================
+     HERO — Nature Distilled  (DB style No. 61)
+     Grounded in styles.csv row 61: muted earthy — terracotta
+     #C67B5C, sand #D4C4A8, warm clay, soft cream #F5F0E1, olive
+     #6B7B3C · organic materials · handmade warmth · grain ·
+     natural ease-out · WCAG AA. Organic blob forms, flat matte
+     color (no gradient CTA — distinct from Storytelling #27).
+     Committed single theme.
+     ============================================================ */
+  :root {
+    --cream:#f5f0e1; --sand:#d4c4a8; --terra:#c67b5c; --clay:#b5651d; --olive:#6b7b3c;
+    --ink:#3d332a; --muted:#7d715f;
+    --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --sans:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6;
+    padding:clamp(16px,4vw,52px);display:flex;justify-content:center;position:relative;
+    -webkit-font-smoothing:antialiased}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.05;mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  .wrap{width:100%;max-width:960px;position:relative;z-index:1}
+
+  .meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;
+    padding:11px 18px;margin-bottom:clamp(22px,4vw,38px);background:rgba(255,255,255,.5);
+    border:1px solid var(--sand);border-radius:14px;font-family:var(--mono);font-size:11px;
+    letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .meta strong{color:var(--ink);font-weight:700}
+  .meta .meta-left{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .meta .idx{color:var(--terra);font-weight:700}
+  .meta .swatches{display:flex;gap:6px;align-items:center}
+  .meta .sw{width:13px;height:13px;border-radius:50%;border:1px solid rgba(61,51,42,.2);display:inline-block}
+
+  .hero{position:relative;overflow:hidden;text-align:center;padding:clamp(36px,6vw,66px) clamp(20px,4vw,48px)}
+  /* organic blob forms */
+  .blob{position:absolute;z-index:0;pointer-events:none;opacity:.5}
+  .bl1{width:300px;height:280px;background:var(--sand);top:-100px;left:-90px;
+    border-radius:58% 42% 55% 45%/52% 48% 52% 48%}
+  .bl2{width:230px;height:220px;background:rgba(198,123,92,.35);bottom:-80px;right:-60px;
+    border-radius:45% 55% 48% 52%/55% 45% 55% 45%}
+  .bl3{width:120px;height:115px;background:rgba(107,123,60,.25);top:34%;right:4%;
+    border-radius:52% 48% 55% 45%/48% 52% 45% 55%}
+  .hero>*:not(.blob){position:relative;z-index:1}
+
+  .wordmark{font-family:var(--serif);font-weight:700;font-size:1.3rem;letter-spacing:.06em;color:var(--olive)}
+  .kicker{display:inline-block;margin:14px 0 26px;padding:7px 18px;border-radius:999px;
+    border:1px solid var(--sand);background:rgba(255,255,255,.55);
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(2.3rem,6.8vw,4.7rem);line-height:1.08;
+    letter-spacing:-.01em;margin:0 auto;max-width:16ch;text-wrap:balance}
+  h1 .accent{color:var(--terra);position:relative}
+  h1 .accent::after{content:"";position:absolute;left:4%;right:4%;bottom:-.08em;height:.14em;
+    background:var(--sand);border-radius:999px;z-index:-1}
+
+  .subhead{font-size:clamp(1.02rem,1.4vw,1.2rem);color:var(--muted);max-width:54ch;margin:24px auto 0}
+
+  form.signup{margin:34px auto 0;display:flex;gap:12px;max-width:480px;justify-content:center;flex-wrap:wrap}
+  form.signup input{flex:1 1 220px;min-width:0;border:1.5px solid var(--sand);border-radius:14px;
+    background:rgba(255,255,255,.75);color:var(--ink);font-family:var(--sans);font-size:1rem;padding:14px 18px;
+    transition:border-color .35s ease-out,box-shadow .35s ease-out}
+  form.signup input::placeholder{color:#ab9c82}
+  form.signup input:focus-visible{outline:none;border-color:var(--terra);box-shadow:0 0 0 4px rgba(198,123,92,.18)}
+  form.signup button{flex:0 0 auto;cursor:pointer;border:0;border-radius:14px;background:var(--terra);color:#fff;
+    font-family:var(--sans);font-size:.95rem;font-weight:700;padding:14px 30px;
+    box-shadow:0 6px 16px rgba(198,123,92,.35);transition:background .35s ease-out,transform .35s ease-out}
+  form.signup button:hover{background:var(--clay);transform:translateY(-1px)}
+  form.signup button:focus-visible{outline:3px solid var(--olive);outline-offset:3px}
+  .microcopy{margin:14px 0 0;font-size:.82rem;color:var(--muted)}
+
+  /* stats as small pressed-clay pebbles */
+  .stats{margin:clamp(32px,5vw,46px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:660px}
+  .stat{flex:1 1 130px;padding:18px 14px;background:rgba(255,255,255,.6);border:1px solid var(--sand);
+    border-radius:45% 55% 50% 50%/28px}
+  .stat .n{font-family:var(--serif);font-size:1.4rem;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+  .stat .l{display:block;margin-top:7px;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted)}
+
+  .reveal{opacity:0;transform:translateY(12px);animation:rise .8s ease-out forwards}
+  .d1{animation-delay:.08s}.d2{animation-delay:.2s}.d3{animation-delay:.32s}.d4{animation-delay:.44s}.d5{animation-delay:.56s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){.reveal{animation:none;opacity:1;transform:none}}
+  @media (max-width:560px){.stat{flex-basis:44%}.bl3{display:none}}
+</style>
+
+<div class="wrap">
+  <div class="meta">
+    <span class="meta-left"><span class="idx">STYLE 61 / 84</span><strong>Nature Distilled</strong></span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#c67b5c"></span><span class="sw" style="background:#d4c4a8"></span>
+      <span class="sw" style="background:#6b7b3c"></span><span class="sw" style="background:#f5f0e1"></span>
+      <span>Earthy · Organic</span>
+    </span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <span class="blob bl1" aria-hidden="true"></span>
+    <span class="blob bl2" aria-hidden="true"></span>
+    <span class="blob bl3" aria-hidden="true"></span>
+
+    <div class="wordmark reveal d1">Dispatch</div>
+    <div><span class="kicker reveal d1">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

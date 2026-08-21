@@ -1,0 +1,267 @@
+<style>
+  /* ————— STYLE 47 · EXAGGERATED MINIMALISM —————
+     Black / white, one vibrant accent, absurdly oversized type,
+     featherweight vs. 900 weights, vast whitespace, cropped scale. */
+
+  .x47-wrap, .x47-wrap * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .x47-wrap {
+    --ink: #000000;
+    --paper: #ffffff;
+    --accent: #ff4d00;
+    --ghost: rgba(0,0,0,.05);
+    font-family: "Helvetica Neue", Helvetica, Arial, "Inter", system-ui, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ——— catalog meta bar (outside hero) ——— */
+  .x47-wrap .meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 14px 24px;
+    border-bottom: 1px solid var(--ink);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .x47-wrap .meta .idx { font-weight: 900; }
+  .x47-wrap .meta .nm { font-weight: 300; }
+  .x47-wrap .meta .sw {
+    display: inline-block;
+    width: 12px; height: 12px;
+    border: 1px solid rgba(0,0,0,.25);
+    vertical-align: middle;
+  }
+  .x47-wrap .meta .era { margin-left: auto; font-weight: 300; opacity: .55; }
+
+  /* ——— hero ——— */
+  .x47-wrap .hero {
+    position: relative;
+    overflow: hidden;              /* crop the oversized type, never the page */
+    background: var(--paper);
+    padding: clamp(4rem, 12vh, 9rem) clamp(1.25rem, 6vw, 6rem) clamp(3rem, 8vh, 6rem);
+    min-height: 92vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* giant cropped ghost word — decorative, CSS-content only */
+  .x47-wrap .ghost::before {
+    content: "DISPATCH";
+    position: absolute;
+    right: -0.18em;
+    bottom: -0.24em;
+    font-size: clamp(10rem, 34vw, 30rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    line-height: 1;
+    color: var(--ghost);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* tiny scattered detail text — decorative, CSS-content only */
+  .x47-wrap .tick { position: absolute; font-size: 9px; letter-spacing: .32em; text-transform: uppercase; font-weight: 500; opacity: .45; pointer-events: none; user-select: none; }
+  .x47-wrap .tick-a { top: 18px; right: clamp(1.25rem, 6vw, 6rem); }
+  .x47-wrap .tick-a::before { content: "N\00B0 142 — 2020s"; }
+  .x47-wrap .tick-b { top: 46%; left: 14px; transform: rotate(90deg); transform-origin: left top; }
+  .x47-wrap .tick-b::before { content: "AIR \00B7 SCALE \00B7 SILENCE"; }
+  .x47-wrap .tick-c { bottom: 14px; right: clamp(1.25rem, 6vw, 6rem); }
+  .x47-wrap .tick-c::before { content: "47 / 84"; }
+
+  /* wordmark — tiny, heavy, alone in a sea of space */
+  .x47-wrap .wordmark {
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+    position: relative; z-index: 2;
+  }
+  .x47-wrap .wordmark::after {
+    content: "";
+    display: block;
+    width: 22px; height: 3px;
+    background: var(--accent);
+    margin-top: 10px;
+  }
+
+  .x47-wrap .kicker {
+    margin-top: clamp(3rem, 9vh, 7rem);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: .34em;
+    text-transform: uppercase;
+    opacity: .6;
+    position: relative; z-index: 2;
+  }
+
+  /* THE statement — viewport-filling, feather × ultra-heavy */
+  .x47-wrap .hero h1 {
+    margin-top: 2.5rem;
+    font-size: clamp(3rem, 11.5vw, 12rem);
+    line-height: .92;
+    letter-spacing: -0.05em;
+    font-weight: 100;
+    max-width: 12ch;
+    position: relative; z-index: 2;
+  }
+  .x47-wrap .hero h1 .hvy { font-weight: 900; display: block; }
+  .x47-wrap .hero h1 .accent { font-weight: 900; color: var(--accent); }
+
+  .x47-wrap .subhead {
+    margin-top: clamp(2.5rem, 7vh, 5rem);
+    font-size: clamp(.95rem, 1.15vw, 1.1rem);
+    font-weight: 300;
+    line-height: 1.75;
+    max-width: 34rem;
+    position: relative; z-index: 2;
+  }
+
+  /* ——— signup ——— */
+  .x47-wrap .signup {
+    margin-top: clamp(2.5rem, 6vh, 4.5rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    max-width: 34rem;
+    position: relative; z-index: 2;
+  }
+  .x47-wrap .signup input {
+    flex: 1 1 220px;
+    min-width: 0;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 1.1rem 0;
+    border: 0;
+    border-bottom: 2px solid var(--ink);
+    border-radius: 0;
+    background: transparent;
+    color: var(--ink);
+    outline: none;
+  }
+  .x47-wrap .signup input::placeholder { color: rgba(0,0,0,.35); font-weight: 300; letter-spacing: .02em; }
+  .x47-wrap .signup input:focus-visible {
+    border-bottom-color: var(--accent);
+    box-shadow: 0 2px 0 0 var(--accent);
+  }
+  .x47-wrap .signup button {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    padding: 1.1rem 2.4rem;
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+  }
+  .x47-wrap .signup button:hover { background: var(--accent); border-color: var(--accent); }
+  .x47-wrap .signup button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .x47-wrap .micro {
+    margin-top: 1.4rem;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    opacity: .55;
+    position: relative; z-index: 2;
+  }
+
+  /* ——— stats — tiny numbers scattered along a hairline ——— */
+  .x47-wrap .stats {
+    margin-top: auto;
+    padding-top: clamp(3rem, 8vh, 6rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1.5rem, 5vw, 5rem);
+    border-top: 1px solid rgba(0,0,0,.15);
+    position: relative; z-index: 2;
+  }
+  .x47-wrap .stat { padding-top: 1.2rem; }
+  .x47-wrap .stat .n {
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .x47-wrap .stat .l {
+    margin-top: .55rem;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    opacity: .55;
+  }
+
+  /* subtle rise-in, honored only when motion is welcome */
+  @media (prefers-reduced-motion: no-preference) {
+    .x47-wrap .hero h1,
+    .x47-wrap .subhead,
+    .x47-wrap .signup,
+    .x47-wrap .micro { animation: x47rise .9s cubic-bezier(.2,.7,.2,1) both; }
+    .x47-wrap .subhead { animation-delay: .12s; }
+    .x47-wrap .signup { animation-delay: .22s; }
+    .x47-wrap .micro { animation-delay: .3s; }
+    @keyframes x47rise {
+      from { opacity: 0; transform: translateY(26px); }
+      to { opacity: 1; transform: none; }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .x47-wrap .hero { min-height: auto; }
+    .x47-wrap .tick-b { display: none; }
+    .x47-wrap .signup button { flex: 1 1 100%; margin-top: 14px; }
+  }
+</style>
+
+<div class="x47-wrap">
+  <div class="meta">
+    <span class="idx">STYLE 47 / 84</span>
+    <span class="nm">Exaggerated Minimalism</span>
+    <span class="sw" style="background:#000000"></span>
+    <span class="sw" style="background:#ffffff"></span>
+    <span class="sw" style="background:#ff4d00"></span>
+    <span class="era">2020s Modern</span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="ghost" aria-hidden="true"></div>
+    <div class="tick tick-a" aria-hidden="true"></div>
+    <div class="tick tick-b" aria-hidden="true"></div>
+    <div class="tick tick-c" aria-hidden="true"></div>
+
+    <div class="wordmark">Dispatch</div>
+
+    <p class="kicker">The Weekly Dispatch · Issue N°142</p>
+
+    <h1>The ideas <span class="hvy">worth your <span class="accent">inbox.</span></span></h1>
+
+    <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch"><input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button type="submit">Subscribe</button></form>
+
+    <p class="micro">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats">
+      <div class="stat"><div class="n">24,000+</div><div class="l">Subscribers</div></div>
+      <div class="stat"><div class="n">Weekly</div><div class="l">Every Friday</div></div>
+      <div class="stat"><div class="n">5 min</div><div class="l">Average read</div></div>
+      <div class="stat"><div class="n">100%</div><div class="l">Free, no ads</div></div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,146 @@
+<style>
+  /* ============================================================
+     HERO — Neubrutalism  (DB style No. 38)
+     Grounded in ui-ux-pro-max styles.csv row 38:
+     bold black outlines (3px+) · bright pop colors (yellow/red/
+     blue) · hard 4px 4px 0 shadows · no gradients · flat colors ·
+     slightly rounded · bold SANS · playful Gen-Z · WCAG AAA.
+     Distinct from raw Brutalism (#04): sans not mono, light ground,
+     multi-color cards, soft radius, friendly hover. Single theme.
+     ============================================================ */
+
+  :root {
+    --paper:#fdfcf7; --ink:#111111; --border:#000000;
+    --yellow:#ffeb3b; --red:#ff5252; --blue:#2196f3; --green:#20c997;
+    --sans: "Helvetica Neue", Arial, system-ui, -apple-system, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    --sh: 4px 4px 0 var(--border);
+    --sh-lg: 6px 6px 0 var(--border);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    background: var(--paper); color: var(--ink); font-family: var(--sans);
+    line-height: 1.5; padding: clamp(16px, 4vw, 48px); display: flex; justify-content: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { width: 100%; max-width: 1060px; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 10px 18px; padding: 10px 16px; margin-bottom: 24px;
+    background: #fff; border: 3px solid var(--border); border-radius: 12px; box-shadow: var(--sh);
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.02em; text-transform: uppercase; font-weight: 700; color: var(--ink);
+  }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { background: var(--yellow); border: 2px solid var(--border); padding: 2px 8px; border-radius: 6px; }
+  .meta .swatches { display: flex; gap: 6px; align-items: center; }
+  .meta .sw { width: 15px; height: 15px; border: 2px solid var(--border); border-radius: 4px; display: inline-block; }
+
+  /* ==================== HERO ==================== */
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: clamp(28px, 5vw, 46px); }
+  .wordmark {
+    background: #fff; border: 3px solid var(--border); border-radius: 10px; box-shadow: var(--sh);
+    font-weight: 800; font-size: clamp(1rem, 2vw, 1.25rem); letter-spacing: 0.01em; padding: 8px 16px;
+  }
+  .kicker {
+    background: var(--blue); color: #fff; border: 3px solid var(--border); border-radius: 999px; box-shadow: var(--sh);
+    font-size: 0.72rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; padding: 8px 16px;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 7.5vw, 5.4rem); line-height: 1.0; letter-spacing: -0.03em; font-weight: 800;
+    margin: 0; max-width: 16ch;
+  }
+  h1 .accent {
+    background: var(--yellow); border: 3px solid var(--border); border-radius: 8px; box-shadow: var(--sh);
+    padding: 0 0.14em; display: inline-block; transform: rotate(-2deg);
+  }
+
+  .subhead { font-size: clamp(1.05rem, 1.5vw, 1.25rem); color: #333; max-width: 54ch; margin: 28px 0 0; font-weight: 500; }
+
+  /* signup */
+  form.signup { margin: 32px 0 0; display: flex; gap: 14px; max-width: 520px; flex-wrap: wrap; }
+  form.signup input {
+    flex: 1 1 220px; min-width: 0; border: 3px solid var(--border); border-radius: 10px; background: #fff; color: var(--ink);
+    font-family: var(--sans); font-size: 1rem; font-weight: 600; padding: 14px 16px; box-shadow: var(--sh);
+  }
+  form.signup input::placeholder { color: #8a8a86; font-weight: 500; }
+  form.signup input:focus-visible { outline: none; border-color: var(--blue); box-shadow: 4px 4px 0 var(--blue); }
+  form.signup button {
+    flex: 0 0 auto; cursor: pointer; border: 3px solid var(--border); border-radius: 10px;
+    background: var(--red); color: #fff; font-family: var(--sans); font-size: 0.95rem; font-weight: 800; letter-spacing: 0.02em;
+    padding: 14px 30px; box-shadow: var(--sh); transition: transform .1s ease, box-shadow .1s ease;
+  }
+  form.signup button:hover { transform: translate(-1px,-1px); box-shadow: var(--sh-lg); }
+  form.signup button:active { transform: translate(4px,4px); box-shadow: 0 0 0 var(--border); }
+  form.signup button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+  .microcopy { margin: 14px 0 0; font-size: 0.82rem; font-weight: 700; color: #555; }
+
+  /* stats as colorful pop cards */
+  .stats { margin: clamp(34px, 5vw, 48px) 0 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .stat { border: 3px solid var(--border); border-radius: 12px; box-shadow: var(--sh); padding: 18px 16px; }
+  .stat:nth-child(1) { background: var(--yellow); }
+  .stat:nth-child(2) { background: var(--blue); color: #fff; }
+  .stat:nth-child(3) { background: var(--red); color: #fff; }
+  .stat:nth-child(4) { background: #fff; }
+  .stat .n { font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1; }
+  .stat .l { display: block; margin-top: 8px; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise .5s cubic-bezier(.2,.8,.2,1) forwards; }
+  .d1{animation-delay:.04s}.d2{animation-delay:.12s}.d3{animation-delay:.2s}.d4{animation-delay:.28s}.d5{animation-delay:.36s}
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+
+  @media (max-width: 620px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+</style>
+
+<div class="wrap">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 38 / 84</span>
+      <strong>Neubrutalism</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#ffeb3b"></span>
+      <span class="sw" style="background:#ff5252"></span>
+      <span class="sw" style="background:#2196f3"></span>
+      <span class="sw" style="background:#000000"></span>
+      <span>Gen Z · Pop</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="top">
+      <span class="wordmark reveal d1">Dispatch</span>
+      <span class="kicker reveal d1">The Weekly Dispatch · Issue N°142</span>
+    </div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

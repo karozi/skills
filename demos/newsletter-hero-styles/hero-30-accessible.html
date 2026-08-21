@@ -1,0 +1,297 @@
+<style>
+  /* ============================================================
+     STYLE 08 / 84 — Accessible & Ethical
+     WCAG AAA made visible and premium.
+     Palette (all pairs AAA, 7:1+ on their backgrounds):
+       ink     #1A2B4A on paper #FBF9F4  ≈ 12.1:1
+       teal    #005A52 on paper #FBF9F4  ≈  7.6:1
+       white   #FFFFFF on teal  #005A52  ≈  7.9:1
+     Focus = two-tone chunky ring (paper gap + navy band).
+     ============================================================ */
+
+  .a11y-scope, .a11y-scope * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .a11y-scope {
+    --paper: #FBF9F4;
+    --ink: #1A2B4A;
+    --teal: #005A52;
+    --line: #D8D2C4;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+  }
+
+  /* ---------- catalog meta bar (outside hero) ---------- */
+  .a11y-scope .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 24px;
+    background: #1A2B4A;
+    color: #FBF9F4;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .a11y-scope .meta .idx { font-variant-numeric: tabular-nums; }
+  .a11y-scope .meta .name { letter-spacing: 0.14em; }
+  .a11y-scope .meta .sw {
+    display: inline-flex;
+    gap: 6px;
+    align-items: center;
+  }
+  .a11y-scope .meta .sw i {
+    width: 16px; height: 16px;
+    border: 2px solid #FBF9F4;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  .a11y-scope .meta .era {
+    margin-left: auto;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    opacity: 0.85;
+  }
+
+  /* ---------- hero ---------- */
+  .a11y-scope .hero {
+    position: relative;
+    padding: clamp(48px, 8vw, 96px) 24px clamp(40px, 6vw, 72px);
+    background:
+      linear-gradient(var(--paper), var(--paper)) padding-box,
+      var(--paper);
+    overflow: hidden;
+  }
+  /* calm structural accents: a navy top rule + teal baseline tick marks */
+  .a11y-scope .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--ink) 0 62%, var(--teal) 62% 100%);
+  }
+
+  .a11y-scope .hero .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .a11y-scope .brandrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 12px 20px;
+    margin-bottom: clamp(32px, 5vw, 56px);
+  }
+
+  .a11y-scope .wordmark {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    border-bottom: 4px solid var(--teal);
+    padding-bottom: 2px;
+  }
+
+  .a11y-scope .kicker {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+  .a11y-scope .kicker .issue {
+    color: var(--ink);
+    border-left: 2px solid var(--line);
+    padding-left: 14px;
+    margin-left: 6px;
+  }
+
+  .a11y-scope h1 {
+    font-size: clamp(40px, 7vw, 68px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    max-width: 16ch;
+    margin-bottom: 24px;
+  }
+  .a11y-scope h1 .accent {
+    color: var(--teal);
+    text-decoration: underline;
+    text-decoration-thickness: 6px;
+    text-underline-offset: 8px;
+    text-decoration-color: var(--teal);
+  }
+
+  .a11y-scope .subhead {
+    font-size: clamp(18px, 2.2vw, 21px);
+    line-height: 1.65;
+    max-width: 58ch;
+    margin-bottom: clamp(28px, 4vw, 40px);
+  }
+
+  /* ---------- form ---------- */
+  .a11y-scope .signup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 560px;
+    margin-bottom: 14px;
+  }
+  .a11y-scope .signup input[type="email"] {
+    flex: 1 1 260px;
+    min-height: 56px;
+    padding: 0 18px;
+    font-size: 18px;
+    font-family: inherit;
+    color: var(--ink);
+    background: #FFFFFF;
+    border: 2px solid var(--ink);
+    border-radius: 8px;
+  }
+  .a11y-scope .signup input[type="email"]::placeholder {
+    color: #4A5568; /* 7.3:1 on white — placeholders count too */
+    opacity: 1;
+  }
+  .a11y-scope .signup button {
+    flex: 0 0 auto;
+    min-height: 56px;
+    min-width: 160px;
+    padding: 0 28px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: inherit;
+    color: #FFFFFF;
+    background: var(--teal);
+    border: 2px solid var(--teal);
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .a11y-scope .signup button:hover {
+    background: #00433D;
+    border-color: #00433D;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  /* exemplary two-tone focus rings: 3px paper gap, then 4px band */
+  .a11y-scope :is(input, button, a):focus-visible {
+    outline: 4px solid var(--ink);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px var(--paper);
+    border-radius: 8px;
+  }
+  .a11y-scope .signup input[type="email"]:focus-visible {
+    outline: 4px solid var(--teal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 3px var(--paper);
+  }
+
+  .a11y-scope .microcopy {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: clamp(36px, 6vw, 64px);
+  }
+  .a11y-scope .microcopy::before {
+    content: "✓";
+    display: inline-block;
+    margin-right: 8px;
+    color: var(--teal);
+    font-weight: 800;
+  }
+
+  /* ---------- stats ---------- */
+  .a11y-scope .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 3px solid var(--ink);
+    list-style: none;
+  }
+  .a11y-scope .stats li {
+    padding: 22px 18px 6px 0;
+    border-left: 2px solid var(--line);
+    padding-left: 18px;
+  }
+  .a11y-scope .stats li:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+  .a11y-scope .stats .num {
+    display: block;
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+  }
+  .a11y-scope .stats .lbl {
+    display: block;
+    margin-top: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 720px) {
+    .a11y-scope .stats { grid-template-columns: repeat(2, 1fr); }
+    .a11y-scope .stats li:nth-child(3) { border-left: none; padding-left: 0; }
+    .a11y-scope .stats li { margin-bottom: 10px; }
+    .a11y-scope .meta .era { margin-left: 0; }
+  }
+  @media (max-width: 420px) {
+    .a11y-scope .stats { grid-template-columns: 1fr; }
+    .a11y-scope .stats li { border-left: none; padding-left: 0; }
+    .a11y-scope .signup button { flex: 1 1 100%; }
+  }
+
+  /* ---------- motion: none introduced; honor the preference anyway ---------- */
+  @media (prefers-reduced-motion: reduce) {
+    .a11y-scope *, .a11y-scope *::before, .a11y-scope *::after {
+      animation: none !important;
+      transition: none !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+
+<div class="a11y-scope">
+  <div class="meta">
+    <span class="idx">STYLE 08 / 84</span>
+    <span class="name">Accessible &amp; Ethical</span>
+    <span class="sw" aria-hidden="true"><i style="background:#FBF9F4"></i><i style="background:#1A2B4A"></i><i style="background:#005A52"></i><i style="background:#D8D2C4"></i></span>
+    <span class="era">Universal Design</span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="wrap">
+      <div class="brandrow">
+        <span class="wordmark">Dispatch</span>
+        <p class="kicker">The Weekly Dispatch <span class="issue">· Issue N°142</span></p>
+      </div>
+
+      <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+
+      <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+      <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch"><input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button type="submit">Subscribe</button></form>
+
+      <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+      <ul class="stats">
+        <li><span class="num">24,000+</span><span class="lbl">Subscribers</span></li>
+        <li><span class="num">Weekly</span><span class="lbl">Every Friday</span></li>
+        <li><span class="num">5 min</span><span class="lbl">Average read</span></li>
+        <li><span class="num">100%</span><span class="lbl">Free, no ads</span></li>
+      </ul>
+    </div>
+  </section>
+</div>

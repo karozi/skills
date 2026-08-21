@@ -1,0 +1,319 @@
+<style>
+  .clay-root {
+    --peach: #FDBCB4;
+    --blue: #ADD8E6;
+    --mint: #98FF98;
+    --lilac: #E6E6FA;
+    --ink: #4A3B52;
+    --ink-soft: #6B5B75;
+    --bg: #FDF6F0;
+    font-family: "Nunito", "Avenir Next", "Trebuchet MS", -apple-system, "Segoe UI", system-ui, sans-serif;
+    color: var(--ink);
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ---------- catalog meta bar ---------- */
+  .clay-root .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 14px 22px;
+    margin: 0 0 18px;
+    background: #FFFFFF;
+    border: 3px solid var(--lilac);
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.9), 0 6px 14px rgba(122, 108, 158, 0.18);
+  }
+  .clay-root .meta .idx { color: var(--ink-soft); }
+  .clay-root .meta .name { text-transform: uppercase; }
+  .clay-root .meta .swatches { display: flex; gap: 6px; }
+  .clay-root .meta .swatches i {
+    width: 18px; height: 18px; border-radius: 7px; display: inline-block;
+    border: 2px solid #fff;
+    box-shadow: inset 0 2px 2px rgba(255,255,255,0.8), 0 3px 5px rgba(90, 80, 120, 0.25);
+  }
+  .clay-root .meta .era {
+    margin-left: auto;
+    padding: 5px 12px;
+    background: var(--mint);
+    border-radius: 999px;
+    border: 2px solid #fff;
+    color: #1E5B2E;
+    font-size: 11px;
+    box-shadow: inset 0 2px 2px rgba(255,255,255,0.7), 0 3px 6px rgba(60, 140, 90, 0.3);
+  }
+
+  /* ---------- hero ---------- */
+  .clay-root .hero {
+    position: relative;
+    isolation: isolate;
+    padding: clamp(36px, 6vw, 72px) clamp(22px, 5vw, 64px) clamp(32px, 5vw, 56px);
+    background: linear-gradient(160deg, #FFF3EC 0%, #F3F0FF 48%, #EAF7F0 100%);
+    border: 4px solid #FFFFFF;
+    border-radius: 36px;
+    box-shadow:
+      inset 0 4px 0 rgba(255,255,255,0.95),
+      inset 0 -10px 24px rgba(173, 216, 230, 0.35),
+      0 18px 40px rgba(154, 129, 187, 0.28);
+    text-align: center;
+  }
+
+  /* floating clay blobs (decorative) */
+  .clay-root .blob {
+    position: absolute;
+    border-radius: 44% 56% 58% 42% / 52% 44% 56% 48%;
+    border: 4px solid rgba(255,255,255,0.9);
+    z-index: -1;
+    animation: clay-float 7s ease-in-out infinite;
+  }
+  .clay-root .blob-1 {
+    width: 120px; height: 110px; top: -34px; left: 4%;
+    background: linear-gradient(145deg, #FFD9D2, var(--peach));
+    box-shadow: inset -6px -8px 16px rgba(224, 122, 108, 0.35), inset 6px 8px 12px rgba(255,255,255,0.8), 10px 14px 24px rgba(224, 122, 108, 0.3);
+  }
+  .clay-root .blob-2 {
+    width: 90px; height: 86px; bottom: -22px; right: 6%;
+    background: linear-gradient(145deg, #CBE9F5, var(--blue));
+    box-shadow: inset -6px -8px 14px rgba(94, 156, 190, 0.35), inset 6px 8px 12px rgba(255,255,255,0.8), 10px 14px 22px rgba(94, 156, 190, 0.3);
+    animation-delay: -2.5s;
+  }
+  .clay-root .blob-3 {
+    width: 64px; height: 60px; top: 18%; right: 3%;
+    background: linear-gradient(145deg, #F1F1FF, var(--lilac));
+    box-shadow: inset -5px -6px 12px rgba(140, 130, 200, 0.3), inset 5px 6px 10px rgba(255,255,255,0.85), 8px 10px 18px rgba(140, 130, 200, 0.28);
+    animation-delay: -4.5s;
+  }
+  @keyframes clay-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(3deg); }
+  }
+
+  /* wordmark badge */
+  .clay-root .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    padding: 10px 22px;
+    background: #FFFFFF;
+    border: 3px solid var(--peach);
+    border-radius: 999px;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,1), inset 0 -4px 8px rgba(253, 188, 180, 0.4), 0 8px 16px rgba(224, 122, 108, 0.28);
+  }
+  .clay-root .wordmark .mark::before {
+    content: "✉";
+    display: inline-grid;
+    place-items: center;
+    width: 30px; height: 30px;
+    font-size: 15px;
+    background: linear-gradient(145deg, #FFD9D2, var(--peach));
+    border: 2px solid #fff;
+    border-radius: 12px;
+    box-shadow: inset 0 2px 2px rgba(255,255,255,0.8), 0 4px 7px rgba(224, 122, 108, 0.35);
+  }
+
+  .clay-root .kicker {
+    display: inline-block;
+    margin: 22px 0 0;
+    padding: 7px 18px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #2E5E77;
+    background: linear-gradient(145deg, #D6EEF8, var(--blue));
+    border: 3px solid #FFFFFF;
+    border-radius: 999px;
+    box-shadow: inset 0 2px 2px rgba(255,255,255,0.8), inset 0 -3px 6px rgba(94, 156, 190, 0.3), 0 6px 12px rgba(94, 156, 190, 0.25);
+  }
+
+  .clay-root h1 {
+    margin: 24px auto 0;
+    max-width: 15ch;
+    font-size: clamp(34px, 6.2vw, 62px);
+    line-height: 1.08;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  .clay-root h1 .accent {
+    display: inline-block;
+    padding: 0.04em 0.32em 0.1em;
+    color: #7C4A94;
+    background: linear-gradient(145deg, #F4F0FF, var(--lilac));
+    border: 3px solid #FFFFFF;
+    border-radius: 22px;
+    box-shadow: inset 0 3px 3px rgba(255,255,255,0.9), inset 0 -5px 10px rgba(150, 130, 200, 0.3), 0 8px 16px rgba(150, 130, 200, 0.3);
+    transform: rotate(-1.5deg);
+  }
+
+  .clay-root .subhead {
+    margin: 20px auto 0;
+    max-width: 56ch;
+    font-size: clamp(15px, 2vw, 18px);
+    line-height: 1.65;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+
+  /* form */
+  .clay-root .signup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    margin: 30px auto 0;
+    max-width: 520px;
+  }
+  .clay-root .signup input[type="email"] {
+    flex: 1 1 260px;
+    min-width: 0;
+    padding: 16px 22px;
+    font: inherit;
+    font-weight: 700;
+    color: var(--ink);
+    background: #FFFFFF;
+    border: 3px solid var(--blue);
+    border-radius: 24px;
+    outline: none;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,1), inset 0 -4px 10px rgba(173, 216, 230, 0.45), 0 8px 16px rgba(94, 156, 190, 0.22);
+    transition: box-shadow 200ms ease-out, border-color 200ms ease-out, transform 200ms ease-out;
+  }
+  .clay-root .signup input::placeholder { color: #9AA6B8; font-weight: 600; }
+  .clay-root .signup input:focus-visible {
+    border-color: #7C4A94;
+    box-shadow: inset 0 3px 0 rgba(255,255,255,1), inset 0 -4px 10px rgba(173, 216, 230, 0.45), 0 8px 16px rgba(94, 156, 190, 0.22), 0 0 0 5px rgba(230, 230, 250, 0.95), 0 0 0 8px rgba(124, 74, 148, 0.45);
+  }
+  .clay-root .signup button {
+    padding: 16px 34px;
+    font: inherit;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    color: #6B2E4E;
+    cursor: pointer;
+    background: linear-gradient(150deg, #FFD3CB 0%, var(--peach) 55%, #F9A79B 100%);
+    border: 3px solid #FFFFFF;
+    border-radius: 24px;
+    box-shadow: inset 0 4px 4px rgba(255,255,255,0.85), inset 0 -6px 12px rgba(224, 122, 108, 0.4), 0 10px 20px rgba(224, 122, 108, 0.4);
+    transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 200ms ease-out;
+  }
+  .clay-root .signup button:hover { transform: translateY(-3px) scale(1.03); }
+  .clay-root .signup button:active {
+    transform: translateY(2px) scale(0.98);
+    box-shadow: inset 0 4px 8px rgba(224, 122, 108, 0.45), inset 0 -2px 4px rgba(255,255,255,0.6), 0 4px 8px rgba(224, 122, 108, 0.3);
+  }
+  .clay-root .signup button:focus-visible {
+    outline: none;
+    box-shadow: inset 0 4px 4px rgba(255,255,255,0.85), inset 0 -6px 12px rgba(224, 122, 108, 0.4), 0 10px 20px rgba(224, 122, 108, 0.4), 0 0 0 5px #FFFFFF, 0 0 0 8px rgba(124, 74, 148, 0.55);
+  }
+
+  .clay-root .microcopy {
+    margin: 16px 0 0;
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+
+  /* stats */
+  .clay-root .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 36px auto 0;
+    max-width: 760px;
+    padding: 0;
+    list-style: none;
+  }
+  .clay-root .stats li {
+    padding: 18px 12px 16px;
+    background: #FFFFFF;
+    border-radius: 26px;
+    border: 3px solid var(--lilac);
+    box-shadow: inset 0 3px 0 rgba(255,255,255,1), inset 0 -5px 10px rgba(150, 130, 200, 0.18), 0 8px 18px rgba(150, 130, 200, 0.22);
+    transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .clay-root .stats li:hover { transform: translateY(-4px); }
+  .clay-root .stats li:nth-child(1) { border-color: var(--peach); box-shadow: inset 0 3px 0 rgba(255,255,255,1), inset 0 -5px 10px rgba(253,188,180,0.35), 0 8px 18px rgba(224,122,108,0.22); }
+  .clay-root .stats li:nth-child(2) { border-color: var(--blue);  box-shadow: inset 0 3px 0 rgba(255,255,255,1), inset 0 -5px 10px rgba(173,216,230,0.4),  0 8px 18px rgba(94,156,190,0.22); }
+  .clay-root .stats li:nth-child(3) { border-color: var(--mint);  box-shadow: inset 0 3px 0 rgba(255,255,255,1), inset 0 -5px 10px rgba(152,255,152,0.35), 0 8px 18px rgba(70,160,100,0.2); }
+  .clay-root .stats .num {
+    display: block;
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 900;
+    letter-spacing: -0.01em;
+  }
+  .clay-root .stats li:nth-child(1) .num { color: #B34A3A; }
+  .clay-root .stats li:nth-child(2) .num { color: #2E6E8E; }
+  .clay-root .stats li:nth-child(3) .num { color: #1E7A3E; }
+  .clay-root .stats li:nth-child(4) .num { color: #7C4A94; }
+  .clay-root .stats .lbl {
+    display: block;
+    margin-top: 4px;
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 560px) {
+    .clay-root .meta .era { margin-left: 0; }
+    .clay-root .blob-1 { width: 80px; height: 74px; }
+    .clay-root .signup button { flex: 1 1 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .clay-root .blob { animation: none; }
+    .clay-root .signup button,
+    .clay-root .signup input[type="email"],
+    .clay-root .stats li { transition: none; }
+    .clay-root .signup button:hover,
+    .clay-root .stats li:hover { transform: none; }
+  }
+</style>
+
+<div class="clay-root">
+  <div class="meta">
+    <span class="idx">STYLE 09 / 84</span>
+    <span class="name">Claymorphism</span>
+    <span class="swatches" aria-hidden="true">
+      <i style="background:#FDBCB4"></i>
+      <i style="background:#ADD8E6"></i>
+      <i style="background:#98FF98"></i>
+      <i style="background:#E6E6FA"></i>
+    </span>
+    <span class="era">2020s Modern</span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <span class="blob blob-1" aria-hidden="true"></span>
+    <span class="blob blob-2" aria-hidden="true"></span>
+    <span class="blob blob-3" aria-hidden="true"></span>
+
+    <div class="wordmark"><span class="mark" aria-hidden="true"></span>Dispatch</div>
+
+    <p class="kicker">The Weekly Dispatch · Issue N°142</p>
+
+    <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch"><input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button type="submit">Subscribe</button></form>
+
+    <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+    <ul class="stats">
+      <li><span class="num">24,000+</span><span class="lbl">Subscribers</span></li>
+      <li><span class="num">Weekly</span><span class="lbl">Every Friday</span></li>
+      <li><span class="num">5 min</span><span class="lbl">Average read</span></li>
+      <li><span class="num">100%</span><span class="lbl">Free, no ads</span></li>
+    </ul>
+  </section>
+</div>

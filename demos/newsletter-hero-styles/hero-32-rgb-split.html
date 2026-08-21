@@ -1,0 +1,351 @@
+<style>
+  /* ============================================================
+     STYLE 67 — CHROMATIC ABERRATION / RGB SPLIT
+     Near-monochrome charcoal ground; red / green / blue channel
+     offsets carry the entire design language, like a misaligned
+     CRT. No gradients, no grids, no HUD — just fringing.
+     ============================================================ */
+  .rgb-scope {
+    --ink: #f2f2f2;
+    --ink-dim: #9a9aa2;
+    --ground: #0b0b0e;
+    --ground-2: #101014;
+    --r: #ff0000;
+    --g: #00ff00;
+    --b: #0000ff;
+    --cyan: #00fff9;      /* G+B overlap, classic fringe partner to red */
+    --rgb-offset: 2px;
+    --glitch-duration: 0.3s;
+    --scanline-opacity: 0.1;
+    --mono: "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    font-family: var(--sans);
+    color: var(--ink);
+    box-sizing: border-box;
+  }
+  .rgb-scope *, .rgb-scope *::before, .rgb-scope *::after { box-sizing: inherit; }
+
+  /* ---------- catalog meta bar (outside the hero) ---------- */
+  .rgb-scope .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    background: #050507;
+    border-bottom: 1px solid #1c1c22;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .rgb-scope .meta .idx { color: var(--ink); }
+  .rgb-scope .meta .name {
+    color: var(--ink);
+    text-shadow: calc(-1 * var(--rgb-offset)) 0 var(--r), var(--rgb-offset) 0 var(--cyan);
+  }
+  .rgb-scope .meta .swatches { display: inline-flex; gap: 5px; margin-left: auto; }
+  .rgb-scope .meta .sw {
+    width: 13px; height: 13px;
+    border: 1px solid #2a2a32;
+    display: inline-block;
+  }
+  .rgb-scope .meta .era { color: var(--ink-dim); }
+
+  /* ---------- hero ---------- */
+  .rgb-scope .hero {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(120% 90% at 50% 0%, var(--ground-2) 0%, var(--ground) 62%);
+    padding: clamp(3rem, 8vw, 6.5rem) clamp(1.25rem, 5vw, 4rem) clamp(2.75rem, 6vw, 4.5rem);
+    text-align: center;
+  }
+  /* scanlines — the only texture, kept subtle */
+  .rgb-scope .hero::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.045) 0px,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    opacity: var(--scanline-opacity);
+    z-index: 4;
+    animation: scan-drift 9s linear infinite;
+  }
+  /* faint channel wash bleeding off the edges, like lens fringing */
+  .rgb-scope .hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(90deg, rgba(255, 0, 0, 0.05) 0%, transparent 14%, transparent 86%, rgba(0, 0, 255, 0.06) 100%);
+    z-index: 1;
+  }
+  .rgb-scope .hero-in {
+    position: relative;
+    z-index: 2;
+    max-width: 46rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ---------- wordmark: split via aria-hidden ghost layers ---------- */
+  .rgb-scope .wordmark {
+    position: relative;
+    display: inline-block;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .rgb-scope .ghost {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    user-select: none;
+    mix-blend-mode: screen;
+  }
+  .rgb-scope .ghost::before { content: attr(data-text); }
+  .rgb-scope .ghost.gr { color: var(--r);  transform: translate(calc(-1 * var(--rgb-offset)), 0); }
+  .rgb-scope .ghost.gg { color: var(--g);  transform: translate(0, var(--rgb-offset)); opacity: .6; }
+  .rgb-scope .ghost.gb { color: var(--b);  transform: translate(var(--rgb-offset), 0); }
+  .rgb-scope .wordmark .ghost.gr { animation: jitter-r 3.4s steps(1) infinite; }
+  .rgb-scope .wordmark .ghost.gb { animation: jitter-b 3.4s steps(1) infinite; }
+
+  /* ---------- kicker ---------- */
+  .rgb-scope .kicker {
+    margin-top: 1.4rem;
+    font-family: var(--mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    text-shadow: -1px 0 rgba(255, 0, 0, 0.55), 1px 0 rgba(0, 0, 255, 0.55);
+  }
+
+  /* ---------- headline: the loudest split on the page ---------- */
+  .rgb-scope h1 {
+    position: relative;
+    margin: 1.1rem 0 0;
+    font-size: clamp(2.4rem, 7.2vw, 4.6rem);
+    line-height: 1.04;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-shadow:
+      calc(-1 * var(--rgb-offset) - 1px) 0 var(--r),
+      calc(var(--rgb-offset) + 1px) 0 var(--cyan);
+  }
+  .rgb-scope h1 .h-wrap { position: relative; display: inline-block; }
+  /* animated slice ghosts over the whole headline */
+  .rgb-scope h1 .ghost { text-shadow: none; }
+  .rgb-scope h1 .ghost.gr {
+    clip-path: inset(12% 0 64% 0);
+    animation: slice-r 4.2s steps(1) infinite;
+  }
+  .rgb-scope h1 .ghost.gb {
+    clip-path: inset(64% 0 8% 0);
+    animation: slice-b 4.2s steps(1) infinite;
+  }
+  .rgb-scope h1 .accent {
+    font-style: normal;
+    color: var(--ink);
+    text-shadow:
+      calc(-2 * var(--rgb-offset)) 0 var(--r),
+      calc(2 * var(--rgb-offset)) 0 var(--cyan),
+      0 var(--rgb-offset) rgba(0, 255, 0, 0.5);
+  }
+
+  /* ---------- subhead: readable, whisper of fringe only ---------- */
+  .rgb-scope .subhead {
+    margin: 1.5rem auto 0;
+    max-width: 36rem;
+    font-size: clamp(1rem, 2.2vw, 1.14rem);
+    line-height: 1.65;
+    color: #c9c9d1;
+    text-shadow: none;
+  }
+
+  /* ---------- signup form ---------- */
+  .rgb-scope .signup {
+    margin-top: 2.1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 30rem;
+  }
+  .rgb-scope .signup input[type="email"] {
+    flex: 1 1 15rem;
+    min-width: 0;
+    padding: 0.85rem 1.05rem;
+    font: inherit;
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    color: var(--ink);
+    background: #131318;
+    border: 1px solid #34343e;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .rgb-scope .signup input[type="email"]::placeholder { color: #6d6d78; }
+  .rgb-scope .signup input[type="email"]:focus-visible {
+    border-color: var(--ink);
+    box-shadow: calc(-1 * var(--rgb-offset) - 1px) 0 0 var(--r), calc(var(--rgb-offset) + 1px) 0 0 var(--cyan);
+  }
+  .rgb-scope .signup button {
+    position: relative;
+    padding: 0.85rem 1.7rem;
+    font: inherit;
+    font-family: var(--mono);
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #000;
+    background: var(--ink);
+    border: 1px solid var(--ink);
+    border-radius: 2px;
+    cursor: pointer;
+    box-shadow: calc(-1 * var(--rgb-offset)) 0 0 var(--r), var(--rgb-offset) 0 0 var(--b);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .rgb-scope .signup button:hover {
+    box-shadow: calc(-2.5 * var(--rgb-offset)) 0 0 var(--r), calc(2.5 * var(--rgb-offset)) 0 0 var(--b), 0 calc(1.5 * var(--rgb-offset)) 0 rgba(0,255,0,.55);
+    transform: translateY(-1px);
+  }
+  .rgb-scope .signup button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    box-shadow: calc(-2.5 * var(--rgb-offset)) 0 0 var(--r), calc(2.5 * var(--rgb-offset)) 0 0 var(--b);
+  }
+  .rgb-scope .signup button:active { transform: translateY(0); }
+
+  /* ---------- microcopy ---------- */
+  .rgb-scope .microcopy {
+    margin-top: 0.95rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  /* ---------- stats ---------- */
+  .rgb-scope .stats {
+    margin-top: 2.9rem;
+    padding-top: 1.9rem;
+    border-top: 1px solid #202028;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem 0.75rem;
+  }
+  .rgb-scope .stat .num {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    color: var(--ink);
+    text-shadow: -1px 0 var(--r), 1px 0 var(--cyan);
+  }
+  .rgb-scope .stat .lbl {
+    margin-top: 0.3rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+
+  @media (max-width: 560px) {
+    .rgb-scope .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rgb-scope .signup button { flex: 1 1 100%; }
+  }
+
+  /* ---------- glitch timing: brief, sparse, controlled ---------- */
+  @keyframes jitter-r {
+    0%, 92%, 100% { transform: translate(calc(-1 * var(--rgb-offset)), 0); }
+    93%           { transform: translate(calc(-3 * var(--rgb-offset)), 1px); }
+    95%           { transform: translate(calc(-1.5 * var(--rgb-offset)), -1px); }
+  }
+  @keyframes jitter-b {
+    0%, 92%, 100% { transform: translate(var(--rgb-offset), 0); }
+    93%           { transform: translate(calc(3 * var(--rgb-offset)), -1px); }
+    95%           { transform: translate(calc(1.5 * var(--rgb-offset)), 1px); }
+  }
+  @keyframes slice-r {
+    0%, 88%, 100% { transform: translate(calc(-1 * var(--rgb-offset)), 0); clip-path: inset(12% 0 64% 0); opacity: 0; }
+    89%           { opacity: .9; transform: translate(calc(-4 * var(--rgb-offset)), 0); clip-path: inset(4% 0 72% 0); }
+    91%           { opacity: .9; transform: translate(calc(2 * var(--rgb-offset)), 0);  clip-path: inset(38% 0 40% 0); }
+    93%           { opacity: 0; }
+  }
+  @keyframes slice-b {
+    0%, 88%, 100% { transform: translate(var(--rgb-offset), 0); clip-path: inset(64% 0 8% 0); opacity: 0; }
+    89.5%         { opacity: .9; transform: translate(calc(4 * var(--rgb-offset)), 0);  clip-path: inset(70% 0 2% 0); }
+    91.5%         { opacity: .9; transform: translate(calc(-2 * var(--rgb-offset)), 0); clip-path: inset(50% 0 26% 0); }
+    93.5%         { opacity: 0; }
+  }
+  @keyframes scan-drift {
+    from { transform: translateY(0); }
+    to   { transform: translateY(4px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rgb-scope .hero::before,
+    .rgb-scope .ghost,
+    .rgb-scope h1 .ghost { animation: none !important; }
+    .rgb-scope h1 .ghost { opacity: 0; }
+    .rgb-scope .signup button,
+    .rgb-scope .signup input[type="email"] { transition: none; }
+  }
+</style>
+
+<div class="rgb-scope">
+  <div class="meta">
+    <span class="idx">STYLE 67 / 84</span>
+    <span class="name">Chromatic Aberration / RGB Split</span>
+    <span class="swatches">
+      <span class="sw" style="background:#FF0000"></span>
+      <span class="sw" style="background:#00FF00"></span>
+      <span class="sw" style="background:#0000FF"></span>
+      <span class="sw" style="background:#000000"></span>
+    </span>
+    <span class="era">2020s Retro-Tech</span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="hero-in">
+      <div class="wordmark">Dispatch<span class="ghost gr" aria-hidden="true" data-text="Dispatch"></span><span class="ghost gg" aria-hidden="true" data-text="Dispatch"></span><span class="ghost gb" aria-hidden="true" data-text="Dispatch"></span></div>
+
+      <p class="kicker">The Weekly Dispatch · Issue N°142</p>
+
+      <h1><span class="h-wrap">The ideas worth your <span class="accent">inbox.</span><span class="ghost gr" aria-hidden="true" data-text="The ideas worth your inbox."></span><span class="ghost gb" aria-hidden="true" data-text="The ideas worth your inbox."></span></span></h1>
+
+      <p class="subhead">One email every Friday. Big ideas, clear thinking, and zero noise — for 24,000 readers who like their insights sharp and their inboxes calm.</p>
+
+      <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch"><input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email"><button type="submit">Subscribe</button></form>
+
+      <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+      <div class="stats">
+        <div class="stat"><div class="num">24,000+</div><div class="lbl">Subscribers</div></div>
+        <div class="stat"><div class="num">Weekly</div><div class="lbl">Every Friday</div></div>
+        <div class="stat"><div class="num">5 min</div><div class="lbl">Average read</div></div>
+        <div class="stat"><div class="num">100%</div><div class="lbl">Free, no ads</div></div>
+      </div>
+    </div>
+  </section>
+</div>

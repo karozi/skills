@@ -1,0 +1,129 @@
+<style>
+  /* ============================================================
+     HERO — Y2K Aesthetic  (DB style No. 40)
+     Grounded in styles.csv row 40: chrome/metallic gradients ·
+     hot pink #FF69B4 · cyan #00FFFF · silver #C0C0C0 · purple ·
+     glossy buttons · bubble shapes · iridescent glow · 2000s
+     futuristic nostalgia. Contrast flag from data → dark ink on
+     the silver ground, white on saturated pills only.
+     ============================================================ */
+  :root {
+    --pink:#ff69b4; --cyan:#00ffff; --silver:#c0c0c0; --purple:#9400d3; --ink:#1c1030;
+    --sans:"Arial Black","Helvetica Neue",Arial,sans-serif;
+    --body:"Trebuchet MS","Segoe UI",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box} html,body{margin:0}
+  body{color:var(--ink);font-family:var(--body);line-height:1.5;padding:clamp(16px,4vw,48px);
+    display:flex;justify-content:center;-webkit-font-smoothing:antialiased;
+    background:linear-gradient(160deg,#e8e8f2 0%,#cfd0dc 30%,#f4f4fa 50%,#c3c4d4 75%,#e9e9f4 100%)}
+  .wrap{width:100%;max-width:1000px}
+
+  .meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 18px;
+    padding:10px 16px;margin-bottom:22px;border-radius:999px;
+    background:linear-gradient(180deg,#fff,#d8d8e4);border:2px solid #fff;
+    box-shadow:0 4px 14px rgba(28,16,48,.18), inset 0 1px 0 #fff;
+    font-family:var(--mono);font-size:11px;letter-spacing:.03em;text-transform:uppercase;font-weight:700;color:#4c4562}
+  .meta strong{color:var(--ink)}
+  .meta .meta-left{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+  .meta .idx{background:linear-gradient(180deg,var(--pink),#e0459b);color:#fff;padding:3px 10px;border-radius:999px}
+  .meta .swatches{display:flex;gap:6px;align-items:center}
+  .meta .sw{width:14px;height:14px;border-radius:50%;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);display:inline-block}
+
+  .hero{position:relative;overflow:hidden;text-align:center;border-radius:30px;
+    background:linear-gradient(165deg,#f6f6fc 0%,#dcdcea 45%,#fdfdff 55%,#cfcfdf 100%);
+    border:3px solid #fff;box-shadow:0 18px 50px rgba(28,16,48,.22), inset 0 2px 0 #fff;
+    padding:clamp(38px,6vw,72px) clamp(22px,5vw,60px)}
+  /* iridescent bubbles + sparkles */
+  .bub{position:absolute;border-radius:50%;pointer-events:none;z-index:0;
+    background:radial-gradient(circle at 30% 28%,rgba(255,255,255,.95),rgba(255,105,180,.35) 45%,rgba(0,255,255,.3) 70%,transparent 75%);
+    border:1px solid rgba(255,255,255,.7)}
+  .b1{width:130px;height:130px;top:-30px;left:6%}
+  .b2{width:70px;height:70px;top:60px;right:10%}
+  .b3{width:100px;height:100px;bottom:-20px;right:22%}
+  .spark{position:absolute;z-index:0;color:var(--purple);pointer-events:none;font-size:26px}
+  .spark::before{content:"✦"}
+  .sp1{top:40px;left:22%} .sp2{bottom:60px;left:10%;color:var(--pink)} .sp3{top:110px;right:6%;color:var(--cyan)}
+  .hero>*:not(.bub):not(.spark){position:relative;z-index:1}
+
+  .wordmark{display:inline-block;font-family:var(--sans);font-size:clamp(1.2rem,2.4vw,1.6rem);letter-spacing:.04em;
+    background:linear-gradient(180deg,#fff 15%,#9a9ab0 40%,#f2f2f8 52%,#7d7d96 70%,#e8e8f2 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 2px 0 rgba(255,255,255,.9)) drop-shadow(0 3px 5px rgba(28,16,48,.35))}
+  .kicker{display:inline-block;margin:16px 0 24px;padding:7px 18px;border-radius:999px;
+    background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(255,255,255,.55));
+    border:2px solid #fff;box-shadow:0 3px 10px rgba(148,0,211,.25);
+    font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple)}
+
+  h1{font-family:var(--sans);font-size:clamp(2.2rem,6.8vw,4.8rem);line-height:1.02;letter-spacing:-.01em;
+    margin:0 auto;max-width:15ch;color:var(--ink);text-shadow:0 2px 0 #fff}
+  h1 .accent{background:linear-gradient(180deg,var(--cyan) 0%,var(--pink) 55%,var(--purple) 100%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    filter:drop-shadow(0 0 12px rgba(255,105,180,.6))}
+
+  .subhead{font-size:clamp(1rem,1.4vw,1.18rem);color:#443c5c;max-width:52ch;margin:22px auto 0;font-weight:500}
+
+  form.signup{margin:32px auto 0;display:flex;gap:12px;max-width:480px;justify-content:center;flex-wrap:wrap}
+  form.signup input{flex:1 1 220px;min-width:0;border:2px solid #fff;border-radius:999px;
+    background:rgba(255,255,255,.85);color:var(--ink);font-family:var(--body);font-size:1rem;padding:14px 20px;
+    box-shadow:inset 0 2px 6px rgba(28,16,48,.12)}
+  form.signup input::placeholder{color:#9a92b0}
+  form.signup input:focus-visible{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,255,255,.4)}
+  form.signup button{flex:0 0 auto;cursor:pointer;border:2px solid #fff;border-radius:999px;
+    background:linear-gradient(180deg,#ff9ed0 0%,var(--pink) 45%,#e0459b 100%);color:#fff;
+    font-family:var(--sans);font-size:.9rem;letter-spacing:.04em;padding:14px 30px;
+    box-shadow:0 6px 16px rgba(255,105,180,.5), inset 0 2px 0 rgba(255,255,255,.8);
+    text-shadow:0 1px 2px rgba(148,0,211,.5);transition:transform .15s,box-shadow .15s}
+  form.signup button:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(148,0,211,.5), inset 0 2px 0 rgba(255,255,255,.8)}
+  form.signup button:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+  .microcopy{margin:14px 0 0;font-size:.8rem;font-weight:700;color:#6d6488}
+
+  .stats{margin:clamp(32px,5vw,44px) auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:680px}
+  .stat{flex:1 1 130px;border-radius:18px;padding:16px 12px;border:2px solid #fff;
+    background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,.5));
+    box-shadow:0 4px 12px rgba(28,16,48,.14), inset 0 1px 0 #fff}
+  .stat .n{font-family:var(--sans);font-size:1.35rem;line-height:1;font-variant-numeric:tabular-nums;
+    background:linear-gradient(180deg,var(--purple),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .l{display:block;margin-top:7px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#6d6488}
+
+  @media (max-width:560px){.stat{flex-basis:44%}.b3,.sp3{display:none}}
+</style>
+
+<div class="wrap">
+  <div class="meta">
+    <span class="meta-left"><span class="idx">STYLE 40 / 84</span><strong>Y2K Aesthetic</strong></span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#ff69b4"></span><span class="sw" style="background:#00ffff"></span>
+      <span class="sw" style="background:#c0c0c0"></span><span class="sw" style="background:#9400d3"></span>
+      <span>2000s · Chrome</span>
+    </span>
+  </div>
+
+  <section class="hero" aria-label="Newsletter hero preview">
+    <span class="bub b1" aria-hidden="true"></span><span class="bub b2" aria-hidden="true"></span><span class="bub b3" aria-hidden="true"></span>
+    <span class="spark sp1" aria-hidden="true"></span><span class="spark sp2" aria-hidden="true"></span><span class="spark sp3" aria-hidden="true"></span>
+
+    <div class="wordmark">Dispatch</div>
+    <div><span class="kicker">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1>The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>

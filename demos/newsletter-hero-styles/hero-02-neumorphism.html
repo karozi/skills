@@ -1,0 +1,269 @@
+<style>
+  /* ============================================================
+     HERO STYLE 02 — Neumorphism
+     Grounded in ui-ux-pro-max styles.csv row 2:
+     soft UI · monochromatic pastel · dual soft shadows ·
+     radius 12-16px+ · smooth 150ms press · embossed/debossed.
+     Accessibility note (from the data): the style is ⚠ low
+     contrast — so BODY TEXT is kept at accessible contrast and
+     every control has a visible accent focus ring.
+     Committed single (light) theme.
+     ============================================================ */
+
+  :root {
+    --base:   #e6ebf4;   /* the single monochrome ground */
+    --dark:   #c5ccdb;   /* darker tint → bottom-right shadow */
+    --light:  #ffffff;   /* lighter → top-left highlight */
+    --ink:    #333a4d;   /* readable slate for text */
+    --muted:  #7c8499;
+    --accent: #5b6cd9;   /* one soft indigo, used sparingly */
+
+    --r: 22px;
+    --raise:  -8px -8px 18px var(--light), 8px 8px 18px var(--dark);
+    --raise-sm: -5px -5px 11px var(--light), 5px 5px 11px var(--dark);
+    --inset: inset -5px -5px 11px var(--light), inset 5px 5px 11px var(--dark);
+
+    --round: ui-rounded, "SF Pro Rounded", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+
+  body {
+    background: var(--base);
+    color: var(--ink);
+    font-family: var(--round);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    padding: clamp(18px, 4vw, 56px);
+    display: flex;
+    justify-content: center;
+  }
+
+  .wrap { width: 100%; max-width: 1000px; }
+
+  /* ============ PREVIEW CHROME (catalog meta bar) ============ */
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    padding: 12px 22px;
+    margin-bottom: clamp(20px, 4vw, 40px);
+    border-radius: 16px;
+    background: var(--base);
+    box-shadow: var(--raise-sm);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .meta strong { color: var(--ink); font-weight: 700; }
+  .meta .meta-left { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .meta .idx { color: var(--accent); font-weight: 700; }
+  .meta .swatches { display: flex; gap: 7px; align-items: center; }
+  .meta .sw { width: 15px; height: 15px; border-radius: 5px; box-shadow: var(--raise-sm); display: inline-block; }
+
+  /* ==================== HERO ==================== */
+  .hero {
+    background: var(--base);
+    border-radius: 34px;
+    box-shadow: var(--raise);
+    padding: clamp(32px, 6vw, 68px) clamp(24px, 5vw, 60px);
+    text-align: center;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+  .brand .badge {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--base);
+    box-shadow: var(--raise-sm);
+    display: grid;
+    place-items: center;
+    color: var(--accent);
+    font-weight: 800;
+    font-size: 1.1rem;
+  }
+  .brand .name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .kicker {
+    display: inline-block;
+    padding: 7px 16px;
+    border-radius: 999px;
+    box-shadow: var(--inset);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 26px;
+  }
+
+  h1 {
+    font-size: clamp(2.1rem, 6vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    margin: 0 auto;
+    max-width: 15ch;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  h1 .accent { color: var(--accent); }
+
+  .subhead {
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 22px auto 0;
+  }
+
+  /* neumorphic email capture: inset field + raised button */
+  form.signup {
+    margin: 36px auto 0;
+    display: flex;
+    gap: 12px;
+    max-width: 460px;
+    background: var(--base);
+    border-radius: 999px;
+    box-shadow: var(--inset);
+    padding: 8px 8px 8px 22px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  form.signup input {
+    flex: 1 1 180px;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--round);
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  form.signup input::placeholder { color: #a2a9ba; }
+  form.signup input:focus-visible { outline: none; }
+  form.signup input:focus-visible::placeholder { color: var(--accent); }
+
+  form.signup button {
+    flex: 0 0 auto;
+    border: 0;
+    border-radius: 999px;
+    background: var(--base);
+    box-shadow: var(--raise-sm);
+    color: var(--accent);
+    font-family: var(--round);
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    padding: 13px 28px;
+    cursor: pointer;
+    transition: box-shadow .15s ease, transform .15s ease, color .15s ease;
+  }
+  form.signup button:hover { color: #4657c9; }
+  form.signup button:active { box-shadow: var(--inset); transform: scale(0.98); }
+  form.signup button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .microcopy {
+    margin: 16px 0 0;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* stats as soft inset wells */
+  .stats {
+    margin: 40px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    max-width: 620px;
+  }
+  .stat {
+    flex: 1 1 120px;
+    border-radius: 18px;
+    box-shadow: var(--inset);
+    padding: 18px 14px;
+  }
+  .stat .n {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--ink);
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+  }
+  .stat .l {
+    display: block;
+    margin-top: 7px;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ---------- reveal on load (soft) ---------- */
+  .reveal { opacity: 0; transform: translateY(12px); animation: rise .6s ease forwards; }
+  .d1 { animation-delay: .05s; } .d2 { animation-delay: .14s; }
+  .d3 { animation-delay: .23s; } .d4 { animation-delay: .32s; } .d5 { animation-delay: .41s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { animation: none; opacity: 1; transform: none; } }
+</style>
+
+<div class="wrap">
+  <!-- preview chrome: catalog meta bar -->
+  <div class="meta">
+    <span class="meta-left">
+      <span class="idx">STYLE 02 / 84</span>
+      <strong>Neumorphism</strong>
+    </span>
+    <span class="swatches" aria-label="Palette">
+      <span class="sw" style="background:#e6ebf4"></span>
+      <span class="sw" style="background:#c5ccdb"></span>
+      <span class="sw" style="background:#5b6cd9"></span>
+      <span>Est. 2020s · Soft UI</span>
+    </span>
+  </div>
+
+  <!-- the hero -->
+  <section class="hero" aria-label="Newsletter hero preview">
+    <div class="brand reveal d1">
+      <span class="badge" aria-hidden="true">D</span>
+      <span class="name">Dispatch</span>
+    </div>
+
+    <div><span class="kicker reveal d1">The Weekly Dispatch · Issue N°142</span></div>
+
+    <h1 class="reveal d2">The ideas worth your <span class="accent">inbox.</span></h1>
+
+    <p class="subhead reveal d3">
+      One email every Friday. Big ideas, clear thinking, and zero noise —
+      for 24,000 readers who like their insights sharp and their inboxes calm.
+    </p>
+
+    <form class="signup reveal d4" onsubmit="return false" aria-label="Subscribe to Dispatch">
+      <input type="email" placeholder="you@example.com" aria-label="Email address" autocomplete="email">
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="microcopy reveal d4">Free forever. Unsubscribe anytime.</p>
+
+    <div class="stats reveal d5">
+      <div class="stat"><span class="n">24,000+</span><span class="l">Subscribers</span></div>
+      <div class="stat"><span class="n">Weekly</span><span class="l">Every Friday</span></div>
+      <div class="stat"><span class="n">5 min</span><span class="l">Average read</span></div>
+      <div class="stat"><span class="n">100%</span><span class="l">Free, no ads</span></div>
+    </div>
+  </section>
+</div>
